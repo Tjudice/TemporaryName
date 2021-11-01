@@ -1,13 +1,13 @@
 //
 //  AppDelegate.swift
-//  Blue Chip Poker
+//  BlueChipPoker
 //
-//  Created by Cameron Berkowitz on 10/27/21.
+//  Created by Akash Akkiraju on 10/28/21.
 //
 
 import UIKit
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
