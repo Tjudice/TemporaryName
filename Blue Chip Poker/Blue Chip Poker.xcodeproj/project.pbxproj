@@ -13,6 +13,7 @@
 		32279FEF272A310500FBBE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FED272A310500FBBE77 /* Main.storyboard */; };
 		32279FF1272A310700FBBE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32279FF0272A310700FBBE77 /* Assets.xcassets */; };
 		32279FF4272A310700FBBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FF2272A310700FBBE77 /* LaunchScreen.storyboard */; };
+		383F0656272F9942008F4D3B /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 383F0655272F9942008F4D3B /* P2PShare */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				383F0656272F9942008F4D3B /* P2PShare in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = "Blue Chip Poker";
+			packageProductDependencies = (
+				383F0655272F9942008F4D3B /* P2PShare */,
+			);
 			productName = "Blue Chip Poker";
 			productReference = 32279FE4272A310500FBBE77 /* Blue Chip Poker.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 32279FDB272A310500FBBE77;
+			packageReferences = (
+				383F0654272F9942008F4D3B /* XCRemoteSwiftPackageReference "P2PShareKit" */,
+			);
 			productRefGroup = 32279FE5272A310500FBBE77 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -364,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		383F0654272F9942008F4D3B /* XCRemoteSwiftPackageReference "P2PShareKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dobster/P2PShareKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		383F0655272F9942008F4D3B /* P2PShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 383F0654272F9942008F4D3B /* XCRemoteSwiftPackageReference "P2PShareKit" */;
+			productName = P2PShare;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 32279FDC272A310500FBBE77 /* Project object */;
 }
