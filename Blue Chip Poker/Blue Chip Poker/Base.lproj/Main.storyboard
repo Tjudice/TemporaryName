@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="menuBackground" id="yHG-oC-PuC">
-                                <rect key="frame" x="32" y="0.0" width="832" height="414"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="menuBackground" id="yHG-oC-PuC">
+                                <rect key="frame" x="-10" y="0.0" width="915" height="414"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blue Chip Poker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hb-U0-vtH">
@@ -42,6 +42,30 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="G06-z6-0wj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkt-uH-GRW">
+                                <rect key="frame" x="332" y="256" width="136" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="User Stats">
+                                    <backgroundConfiguration key="background" cornerRadius="30">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8s-9l-B2e">
+                                <rect key="frame" x="291" y="321" width="218" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="How to Play Poker">
+                                    <backgroundConfiguration key="background" cornerRadius="30">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AZM-GJ-sr5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -59,25 +83,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bX0-nc-Ucr">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menuBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bX0-nc-Ucr">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Establishing Host and Finding Connections Nearby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRX-ra-nqH">
+                                <rect key="frame" x="199" y="56" width="523" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUB-r6-HIK">
+                                <rect key="frame" x="664" y="180" width="180" height="53"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Start Game">
+                                    <backgroundConfiguration key="background" cornerRadius="22">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="32"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-MV-Prz">
-                                <rect key="frame" x="0.0" y="164" width="621" height="250"/>
+                                <rect key="frame" x="79" y="119" width="552" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="izn-4f-HS1"/>
+                                    <constraint firstAttribute="width" constant="552" id="mlV-kS-08r"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Peer Cell" textLabel="XEd-pS-sfw" style="IBUITableViewCellStyleDefault" id="HgE-Ml-Jqg">
-                                        <rect key="frame" x="0.0" y="44.5" width="621" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="552" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HgE-Ml-Jqg" id="c59-PV-nso">
-                                            <rect key="frame" x="44" y="0.0" width="577" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="552" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XEd-pS-sfw">
-                                                    <rect key="frame" x="20" y="0.0" width="537" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="512" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -88,31 +131,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Establishing Host and Finding Connections Nearby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRX-ra-nqH">
-                                <rect key="frame" x="300" y="43" width="385" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSp-1x-7oi">
-                                <rect key="frame" x="687" y="261" width="149" height="37"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSp-1x-7oi">
+                                <rect key="frame" x="664" y="272" width="177" height="43"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Game Settings">
                                     <backgroundConfiguration key="background" cornerRadius="22">
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="19"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-iS-6NC">
-                                <rect key="frame" x="704" y="197" width="132" height="41"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Start Game">
-                                    <backgroundConfiguration key="background" cornerRadius="20">
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                             </button>
@@ -120,23 +146,17 @@
                         <viewLayoutGuide key="safeArea" id="i2h-Qd-X2B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NSp-1x-7oi" firstAttribute="top" secondItem="d3s-iS-6NC" secondAttribute="bottom" constant="18" id="3LX-Ie-HNc"/>
-                            <constraint firstItem="d3s-iS-6NC" firstAttribute="leading" secondItem="kMi-MV-Prz" secondAttribute="trailing" constant="52" id="5L7-l2-uDK"/>
-                            <constraint firstItem="NSp-1x-7oi" firstAttribute="leading" secondItem="kMi-MV-Prz" secondAttribute="trailing" constant="44" id="71x-7Q-diG"/>
-                            <constraint firstItem="bX0-nc-Ucr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8pd-Pb-iay"/>
-                            <constraint firstAttribute="trailing" secondItem="sRX-ra-nqH" secondAttribute="trailing" constant="211" id="ASM-vJ-Kwf"/>
-                            <constraint firstItem="sRX-ra-nqH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" symbolic="YES" id="HP4-bP-9gw"/>
-                            <constraint firstItem="bX0-nc-Ucr" firstAttribute="leading" secondItem="kMi-MV-Prz" secondAttribute="trailing" constant="-621" id="JiY-jq-8eJ"/>
-                            <constraint firstItem="NSp-1x-7oi" firstAttribute="top" secondItem="bX0-nc-Ucr" secondAttribute="bottom" constant="-156" id="OEm-Vg-hDA"/>
-                            <constraint firstAttribute="bottom" secondItem="kMi-MV-Prz" secondAttribute="bottom" id="ayF-lC-ZsP"/>
-                            <constraint firstItem="kMi-MV-Prz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j8F-7d-ZCr"/>
-                            <constraint firstItem="d3s-iS-6NC" firstAttribute="leading" secondItem="bX0-nc-Ucr" secondAttribute="trailing" constant="-223" id="k8T-9I-U31"/>
-                            <constraint firstItem="NSp-1x-7oi" firstAttribute="leading" secondItem="bX0-nc-Ucr" secondAttribute="trailing" constant="-231" id="kMH-nk-ifN"/>
-                            <constraint firstAttribute="bottom" secondItem="bX0-nc-Ucr" secondAttribute="bottom" id="nvp-rA-04t"/>
-                            <constraint firstItem="bX0-nc-Ucr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="oKl-aL-NOQ"/>
-                            <constraint firstItem="d3s-iS-6NC" firstAttribute="top" secondItem="bX0-nc-Ucr" secondAttribute="bottom" constant="-215" id="pyL-hz-t3j"/>
-                            <constraint firstAttribute="trailing" secondItem="bX0-nc-Ucr" secondAttribute="trailing" id="sI1-Db-UCc"/>
-                            <constraint firstItem="bX0-nc-Ucr" firstAttribute="top" secondItem="sRX-ra-nqH" secondAttribute="bottom" constant="-64" id="yJv-5k-f5f"/>
+                            <constraint firstItem="i2h-Qd-X2B" firstAttribute="trailing" secondItem="NSp-1x-7oi" secondAttribute="trailing" constant="11" id="CUn-77-Vtq"/>
+                            <constraint firstItem="WUB-r6-HIK" firstAttribute="leading" secondItem="kMi-MV-Prz" secondAttribute="trailing" constant="33" id="HMO-00-CQS"/>
+                            <constraint firstItem="i2h-Qd-X2B" firstAttribute="trailing" secondItem="WUB-r6-HIK" secondAttribute="trailing" constant="8" id="OPj-DZ-DmR"/>
+                            <constraint firstItem="NSp-1x-7oi" firstAttribute="leading" secondItem="kMi-MV-Prz" secondAttribute="trailing" constant="33" id="XwP-yr-0Mu"/>
+                            <constraint firstItem="sRX-ra-nqH" firstAttribute="leading" secondItem="i2h-Qd-X2B" secondAttribute="leading" constant="155" id="YDC-TM-fKQ"/>
+                            <constraint firstItem="WUB-r6-HIK" firstAttribute="top" secondItem="i2h-Qd-X2B" secondAttribute="top" constant="180" id="bhE-PL-Svo"/>
+                            <constraint firstItem="i2h-Qd-X2B" firstAttribute="bottom" secondItem="NSp-1x-7oi" secondAttribute="bottom" constant="78" id="eZ1-5u-U7u"/>
+                            <constraint firstItem="i2h-Qd-X2B" firstAttribute="bottom" secondItem="kMi-MV-Prz" secondAttribute="bottom" constant="24" id="gfu-bq-Gzf"/>
+                            <constraint firstItem="i2h-Qd-X2B" firstAttribute="trailing" secondItem="sRX-ra-nqH" secondAttribute="trailing" constant="130" id="lD2-1C-Wc3"/>
+                            <constraint firstItem="NSp-1x-7oi" firstAttribute="top" secondItem="WUB-r6-HIK" secondAttribute="bottom" constant="39" id="swe-ey-Rd3"/>
+                            <constraint firstItem="kMi-MV-Prz" firstAttribute="top" secondItem="sRX-ra-nqH" secondAttribute="bottom" constant="34" id="zG1-im-r13"/>
                         </constraints>
                     </view>
                     <connections>

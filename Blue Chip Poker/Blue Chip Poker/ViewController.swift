@@ -49,6 +49,7 @@ private extension ViewController {
         return UITableViewDiffableDataSource(tableView: peersTableView) { (tableView, indexPath, peer) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "Peer Cell", for: indexPath)
             cell.textLabel?.text = peer.info["name"]
+            cell.accessoryType = .checkmark
             return cell
         }
     }
