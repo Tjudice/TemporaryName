@@ -24,13 +24,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         peersTableView.dataSource = playersDataSource
-        
+
         let config = MultipeerSessionConfig(myPeerInfo: myPlayerInfo,
                                             bonjourService: "_demo._tcp",
                                             presharedKey: "12345",
                                             identity: "BLUE_CHIP_POKER")
         session = MultipeerSession(config: config, queue: .main)
-        
+
         session.peersChangeHandler = { [weak self] players in
             self?.updateplayers(players)
         }

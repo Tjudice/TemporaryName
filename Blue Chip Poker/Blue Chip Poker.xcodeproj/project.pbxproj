@@ -14,6 +14,7 @@
 		32279FF4272A310700FBBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FF2272A310700FBBE77 /* LaunchScreen.storyboard */; };
 		383F0656272F9942008F4D3B /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 383F0655272F9942008F4D3B /* P2PShare */; };
 		383F065827301552008F4D3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F065727301552008F4D3B /* ViewController.swift */; };
+		38C47AAC273032000046341A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C47AAB273032000046341A /* MainController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		32279FF3272A310700FBBE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32279FF5272A310700FBBE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		383F065727301552008F4D3B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		38C47AAB273032000046341A /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				32279FE9272A310500FBBE77 /* SceneDelegate.swift */,
 				32279FED272A310500FBBE77 /* Main.storyboard */,
 				383F065727301552008F4D3B /* ViewController.swift */,
+				38C47AAB273032000046341A /* MainController.swift */,
 				32279FF0272A310700FBBE77 /* Assets.xcassets */,
 				32279FF2272A310700FBBE77 /* LaunchScreen.storyboard */,
 				32279FF5272A310700FBBE77 /* Info.plist */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C47AAC273032000046341A /* MainController.swift in Sources */,
 				383F065827301552008F4D3B /* ViewController.swift in Sources */,
 				32279FE8272A310500FBBE77 /* AppDelegate.swift in Sources */,
 				32279FEA272A310500FBBE77 /* SceneDelegate.swift in Sources */,
