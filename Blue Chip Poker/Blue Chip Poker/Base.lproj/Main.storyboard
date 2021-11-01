@@ -1,24 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Blue_Chip_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="xUF-gU-pd6">
+                                <rect key="frame" x="0.0" y="0.0" width="914" height="425"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="425" id="HER-nv-j5d"/>
+                                    <constraint firstAttribute="width" constant="914" id="KxL-fq-aq7"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mla-s4-gRi" colorLabel="IBBuiltInLabel-Blue">
+                                <rect key="frame" x="197" y="126" width="503" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="93" id="o2f-ze-Tri"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Create Game"/>
+                                <connections>
+                                    <segue destination="ant-Ry-hhW" kind="presentation" id="NQn-uP-3VY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue Chip Poker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3L-4k-Al9">
+                                <rect key="frame" x="307" y="43" width="283" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mla-s4-gRi" secondAttribute="trailing" constant="152" id="6X8-Ut-1Md"/>
+                            <constraint firstItem="xUF-gU-pd6" firstAttribute="top" secondItem="p3L-4k-Al9" secondAttribute="bottom" constant="-94" id="6yJ-nC-S5T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mla-s4-gRi" secondAttribute="bottom" constant="174" id="CMW-a7-7pH"/>
+                            <constraint firstItem="mla-s4-gRi" firstAttribute="top" secondItem="p3L-4k-Al9" secondAttribute="bottom" constant="32" id="CuH-RY-Ztu"/>
+                            <constraint firstItem="mla-s4-gRi" firstAttribute="centerX" secondItem="p3L-4k-Al9" secondAttribute="centerX" id="CxV-aB-GRk"/>
+                            <constraint firstItem="xUF-gU-pd6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Itt-c0-dFd"/>
+                            <constraint firstItem="xUF-gU-pd6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KzO-AR-ozy"/>
+                            <constraint firstItem="mla-s4-gRi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="153" id="k4q-0v-g74"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="29.464285714285712" y="66.666666666666671"/>
+        </scene>
+        <!--Create Game Controller-->
+        <scene sceneID="9GH-eo-evr">
+            <objects>
+                <tableViewController id="ant-Ry-hhW" customClass="CreateGameController" customModule="Blue_Chip_Poker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ff4-zy-WjC">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="b6C-9w-OdO">
+                            <rect key="frame" x="0.0" y="110.5" width="896" height="55"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Search Games"/>
+                            <connections>
+                                <action selector="search:" destination="ant-Ry-hhW" eventType="touchUpInside" id="6da-7q-adB"/>
+                            </connections>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mZp-L7-La6">
+                                <rect key="frame" x="0.0" y="44.5" width="896" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mZp-L7-La6" id="D04-Bo-1PE">
+                                    <rect key="frame" x="44" y="0.0" width="808" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ant-Ry-hhW" id="S3c-Sm-CKN"/>
+                            <outlet property="delegate" destination="ant-Ry-hhW" id="Oln-ia-oUl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lUN-SP-yja"/>
+                    <connections>
+                        <outlet property="peersTableView" destination="Ff4-zy-WjC" id="IFK-be-Rze"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FV9-mG-S8P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="707.8125" y="55.072463768115945"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="753" height="378"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CreateGameController.swift
 //  Blue Chip Poker
 //
 //  Created by Cameron Berkowitz on 10/27/21.
@@ -8,11 +8,7 @@
 import UIKit
 import P2PShare
 
-class ViewController: UIViewController {
-
-    @IBOutlet private var messagesTableView: UITableView!
-    @IBOutlet private var peersTableView: UITableView!
-    @IBOutlet private var messageTextField: UITextField!
+class CreateGameController: UIViewController {
     
 //    @IBAction func send(_ sender: UITextField) {
 //        messageTextField.resignFirstResponder()
@@ -22,6 +18,23 @@ class ViewController: UIViewController {
 //            else { return }
 //        session.sendToAllPeers(data: data)
 //    }
+    
+    @IBOutlet var peersTableView: UITableView!
+    
+    @IBAction func search(_ sender: Any) {
+        peersTableView.dataSource = playersDataSource
+        
+        let config = MultipeerSessionConfig(myPeerInfo: myPlayerInfo,
+                                            bonjourService: "_demo._tcp",
+                                            presharedKey: "12345",
+                                            identity: "DEMO_IDENTITY")
+        session = MultipeerSession(config: config, queue: .main)
+        
+        session.peersChangeHandler = { [weak self] players in
+            self?.updateplayers(players)
+    }
+        session.startSharing()
+    }
     
     private let myPlayerInfo = PeerInfo(["name": UIDevice.current.name])
     
@@ -35,30 +48,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        messagesTableView.dataSource = messagesDataSource
-        peersTableView.dataSource = playersDataSource
-        
-        let config = MultipeerSessionConfig(myPeerInfo: myPlayerInfo,
-                                            bonjourService: "_demo._tcp",
-                                            presharedKey: "12345",
-                                            identity: "DEMO_IDENTITY")
-        session = MultipeerSession(config: config, queue: .main)
-        
-        session.peersChangeHandler = { [weak self] players in
-            self?.updateplayers(players)
-        }
-        
-//        session.messageReceivedHandler = { [weak self] peerInfo, data in
-//            guard let message = String(data: data, encoding: .unicode),
-//                let from = peerInfo.info["name"] else { return }
-//            self?.addMessage("\(from): \(message)")
-//        }
-        
-        session.startSharing()
     }
 }
 
-private extension ViewController {
+private extension CreateGameController {
     
     enum Section: CaseIterable {
         case main
