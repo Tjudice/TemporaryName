@@ -25,6 +25,7 @@
 		32279FF0272A310700FBBE77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32279FF3272A310700FBBE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32279FF5272A310700FBBE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32ED6712274C92CC00C6A4A6 /* pokerlib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = pokerlib; path = ../../../pokerlib; sourceTree = "<group>"; };
 		383F065727301552008F4D3B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		38C47AAB273032000046341A /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +61,7 @@
 		32279FE6272A310500FBBE77 /* Blue Chip Poker */ = {
 			isa = PBXGroup;
 			children = (
+				32ED6712274C92CC00C6A4A6 /* pokerlib */,
 				32279FE7272A310500FBBE77 /* AppDelegate.swift */,
 				32279FE9272A310500FBBE77 /* SceneDelegate.swift */,
 				32279FED272A310500FBBE77 /* Main.storyboard */,
