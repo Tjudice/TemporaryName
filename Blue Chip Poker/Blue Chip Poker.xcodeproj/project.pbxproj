@@ -12,6 +12,7 @@
 		32279FEF272A310500FBBE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FED272A310500FBBE77 /* Main.storyboard */; };
 		32279FF1272A310700FBBE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32279FF0272A310700FBBE77 /* Assets.xcassets */; };
 		32279FF4272A310700FBBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FF2272A310700FBBE77 /* LaunchScreen.storyboard */; };
+		32ED6715274C998900C6A4A6 /* pokerlib in Frameworks */ = {isa = PBXBuildFile; productRef = 32ED6714274C998900C6A4A6 /* pokerlib */; };
 		383F0656272F9942008F4D3B /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 383F0655272F9942008F4D3B /* P2PShare */; };
 		383F065827301552008F4D3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F065727301552008F4D3B /* ViewController.swift */; };
 		38C47AAC273032000046341A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C47AAB273032000046341A /* MainController.swift */; };
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32ED6715274C998900C6A4A6 /* pokerlib in Frameworks */,
 				383F0656272F9942008F4D3B /* P2PShare in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -47,6 +49,7 @@
 			children = (
 				32279FE6272A310500FBBE77 /* Blue Chip Poker */,
 				32279FE5272A310500FBBE77 /* Products */,
+				32ED6713274C998900C6A4A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +77,13 @@
 			path = "Blue Chip Poker";
 			sourceTree = "<group>";
 		};
+		32ED6713274C998900C6A4A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,6 +102,7 @@
 			name = "Blue Chip Poker";
 			packageProductDependencies = (
 				383F0655272F9942008F4D3B /* P2PShare */,
+				32ED6714274C998900C6A4A6 /* pokerlib */,
 			);
 			productName = "Blue Chip Poker";
 			productReference = 32279FE4272A310500FBBE77 /* Blue Chip Poker.app */;
@@ -395,6 +406,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		32ED6714274C998900C6A4A6 /* pokerlib */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = pokerlib;
+		};
 		383F0655272F9942008F4D3B /* P2PShare */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 383F0654272F9942008F4D3B /* XCRemoteSwiftPackageReference "P2PShareKit" */;

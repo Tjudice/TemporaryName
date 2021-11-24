@@ -6,11 +6,32 @@
 //
 
 import UIKit
+import pokerlib
 
 class MainController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let eval = Evaluator()
+                
+        var d = Deck()
+        d.shuffle()
+        
+        var p1 = Player(name: "James")
+        var p2 = Player(name: "Akash")
+        var p3 = Player(name: "Jake")
+        
+        var dealer = Dealer(evaluator: eval)
+        
+        p1.cards = dealer.dealHand()
+        p2.cards = dealer.dealHand()
+        p3.cards = dealer.dealHand()
+        
+        
+        print(p1.cardsNames)
+        _ = dealer.dealFlop()
+        _ = dealer.dealTurn()
+        _ = dealer.dealRiver()
 
         // Do any additional setup after loading the view.
     }
