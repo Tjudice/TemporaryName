@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A43DCB9274ECC4900982FD3 /* BalanceMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43DCB8274ECC4900982FD3 /* BalanceMenuView.swift */; };
+		9A43DCBB274F651800982FD3 /* GameMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43DCBA274F651700982FD3 /* GameMenuViewModel.swift */; };
 		9AB540B9272DCFD500403B1D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540B8272DCFD500403B1D /* GameScene.swift */; };
 		9AB540C0272DCFDA00403B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB540BF272DCFDA00403B1D /* Assets.xcassets */; };
 		9AB540D1272F72A800403B1D /* BlueChipPokerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540D0272F72A800403B1D /* BlueChipPokerApp.swift */; };
 		9AB540D3272F72EC00403B1D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540D2272F72EC00403B1D /* MenuView.swift */; };
 		9AB540DA272F925500403B1D /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540D9272F925500403B1D /* GameMenuView.swift */; };
+		9AB540DD272FAF3300403B1D /* P2PNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540DC272FAF3300403B1D /* P2PNetwork.swift */; };
+		9AB540DF272FB06800403B1D /* P2PSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540DE272FB06800403B1D /* P2PSession.swift */; };
+		9AB540E4272FB70B00403B1D /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 9AB540E3272FB70B00403B1D /* P2PShare */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A43DCB8274ECC4900982FD3 /* BalanceMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceMenuView.swift; sourceTree = "<group>"; };
+		9A43DCBA274F651700982FD3 /* GameMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuViewModel.swift; sourceTree = "<group>"; };
 		9AB540AF272DCFD500403B1D /* BlueChipPoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueChipPoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AB540B8272DCFD500403B1D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		9AB540BF272DCFDA00403B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -22,6 +29,8 @@
 		9AB540D2272F72EC00403B1D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		9AB540D6272F8E0100403B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9AB540D9272F925500403B1D /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
+		9AB540DC272FAF3300403B1D /* P2PNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PNetwork.swift; sourceTree = "<group>"; };
+		9AB540DE272FB06800403B1D /* P2PSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB540E4272FB70B00403B1D /* P2PShare in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,10 +65,10 @@
 			isa = PBXGroup;
 			children = (
 				9AB540D6272F8E0100403B1D /* Info.plist */,
+				9AB540DB272FADCB00403B1D /* P2P */,
 				9AB540CE272F54BF00403B1D /* Shared */,
 				9AB540CD272F54A100403B1D /* Menus */,
 				9AB540CF272F54E200403B1D /* Gameplay */,
-				9AB540B8272DCFD500403B1D /* GameScene.swift */,
 				9AB540BF272DCFDA00403B1D /* Assets.xcassets */,
 			);
 			path = BlueChipPoker;
@@ -68,7 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				9AB540D2272F72EC00403B1D /* MenuView.swift */,
+				9A43DCB8274ECC4900982FD3 /* BalanceMenuView.swift */,
 				9AB540D9272F925500403B1D /* GameMenuView.swift */,
+				9A43DCBA274F651700982FD3 /* GameMenuViewModel.swift */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -84,8 +96,18 @@
 		9AB540CF272F54E200403B1D /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
+				9AB540B8272DCFD500403B1D /* GameScene.swift */,
 			);
 			path = Gameplay;
+			sourceTree = "<group>";
+		};
+		9AB540DB272FADCB00403B1D /* P2P */ = {
+			isa = PBXGroup;
+			children = (
+				9AB540DC272FAF3300403B1D /* P2PNetwork.swift */,
+				9AB540DE272FB06800403B1D /* P2PSession.swift */,
+			);
+			path = P2P;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +126,9 @@
 			dependencies = (
 			);
 			name = BlueChipPoker;
+			packageProductDependencies = (
+				9AB540E3272FB70B00403B1D /* P2PShare */,
+			);
 			productName = BlueChipPoker;
 			productReference = 9AB540AF272DCFD500403B1D /* BlueChipPoker.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +157,9 @@
 				Base,
 			);
 			mainGroup = 9AB540A6272DCFD500403B1D;
+			packageReferences = (
+				9AB540E2272FB70B00403B1D /* XCRemoteSwiftPackageReference "P2PShareKit" */,
+			);
 			productRefGroup = 9AB540B0272DCFD500403B1D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -159,8 +187,12 @@
 			files = (
 				9AB540B9272DCFD500403B1D /* GameScene.swift in Sources */,
 				9AB540D3272F72EC00403B1D /* MenuView.swift in Sources */,
+				9AB540DD272FAF3300403B1D /* P2PNetwork.swift in Sources */,
 				9AB540D1272F72A800403B1D /* BlueChipPokerApp.swift in Sources */,
 				9AB540DA272F925500403B1D /* GameMenuView.swift in Sources */,
+				9A43DCBB274F651800982FD3 /* GameMenuViewModel.swift in Sources */,
+				9A43DCB9274ECC4900982FD3 /* BalanceMenuView.swift in Sources */,
+				9AB540DF272FB06800403B1D /* P2PSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +327,7 @@
 				INFOPLIST_FILE = BlueChipPoker/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
@@ -325,6 +358,7 @@
 				INFOPLIST_FILE = BlueChipPoker/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
@@ -365,6 +399,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9AB540E2272FB70B00403B1D /* XCRemoteSwiftPackageReference "P2PShareKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dobster/P2PShareKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9AB540E3272FB70B00403B1D /* P2PShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AB540E2272FB70B00403B1D /* XCRemoteSwiftPackageReference "P2PShareKit" */;
+			productName = P2PShare;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9AB540A7272DCFD500403B1D /* Project object */;
 }
