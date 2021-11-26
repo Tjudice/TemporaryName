@@ -23,6 +23,39 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let eval = Evaluator()
+                        
+        var d = Deck()
+        d.shuffle()
+        
+        var p1 = Player(name: "James")
+        var p2 = Player(name: "Akash")
+        var p3 = Player(name: "Jake")
+        
+        var dealer = Dealer(evaluator: eval)
+        
+        p1.cards = dealer.dealHand()
+        p2.cards = dealer.dealHand()
+        p3.cards = dealer.dealHand()
+        
+        
+        print(p1.cardsNames)
+        print(p2.cardsNames)
+        print(p3.cardsNames)
+        _ = dealer.dealFlop()
+        _ = dealer.dealTurn()
+        _ = dealer.dealRiver()
+        
+        print(dealer.currentGame)
+        
+        dealer.evaluateHandAtRiver(for: &p1)
+        dealer.evaluateHandAtRiver(for: &p2)
+        dealer.evaluateHandAtRiver(for: &p3)
+
+        print(dealer.findHeadsUpWinner(player1: p1, player2: dealer.findHeadsUpWinner(player1: p2, player2: p3)))
+    
+        
         peersTableView.dataSource = playersDataSource
 
         let config = MultipeerSessionConfig(myPeerInfo: myPlayerInfo,
