@@ -24,8 +24,10 @@
 		3827DFC22750B05400A5121A /* SPHEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827DFB62750B05300A5121A /* SPHEvaluator.swift */; };
 		3827DFC32750B05400A5121A /* primeProductToCombination_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3827DFB72750B05300A5121A /* primeProductToCombination_bytes.json */; };
 		3827DFC42750B05400A5121A /* SPHModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827DFB82750B05400A5121A /* SPHModelCard.swift */; };
+		3827DFC62750B1C600A5121A /* cards_png in Resources */ = {isa = PBXBuildFile; fileRef = 3827DFC52750B1C500A5121A /* cards_png */; };
+		3827DFC82750B4DE00A5121A /* PokerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827DFC72750B4DE00A5121A /* PokerViewController.swift */; };
 		383F0656272F9942008F4D3B /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 383F0655272F9942008F4D3B /* P2PShare */; };
-		383F065827301552008F4D3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F065727301552008F4D3B /* ViewController.swift */; };
+		383F065827301552008F4D3B /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F065727301552008F4D3B /* HostViewController.swift */; };
 		38C47AAC273032000046341A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C47AAB273032000046341A /* MainController.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +51,9 @@
 		3827DFB62750B05300A5121A /* SPHEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHEvaluator.swift; sourceTree = "<group>"; };
 		3827DFB72750B05300A5121A /* primeProductToCombination_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = primeProductToCombination_bytes.json; sourceTree = "<group>"; };
 		3827DFB82750B05400A5121A /* SPHModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelCard.swift; sourceTree = "<group>"; };
-		383F065727301552008F4D3B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3827DFC52750B1C500A5121A /* cards_png */ = {isa = PBXFileReference; lastKnownFileType = folder; path = cards_png; sourceTree = "<group>"; };
+		3827DFC72750B4DE00A5121A /* PokerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerViewController.swift; sourceTree = "<group>"; };
+		383F065727301552008F4D3B /* HostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		38C47AAB273032000046341A /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +91,8 @@
 				32279FE7272A310500FBBE77 /* AppDelegate.swift */,
 				32279FE9272A310500FBBE77 /* SceneDelegate.swift */,
 				32279FED272A310500FBBE77 /* Main.storyboard */,
-				383F065727301552008F4D3B /* ViewController.swift */,
+				3827DFC72750B4DE00A5121A /* PokerViewController.swift */,
+				383F065727301552008F4D3B /* HostViewController.swift */,
 				3827DFAE2750B05300A5121A /* combinationToRank_bytes.json */,
 				3827DFB02750B05300A5121A /* flushes_bytes.json */,
 				3827DFB72750B05300A5121A /* primeProductToCombination_bytes.json */,
@@ -101,6 +106,7 @@
 				3827DFB52750B05300A5121A /* SPHModelTable.swift */,
 				3827DFB22750B05300A5121A /* uniqueToRanks_bytes.json */,
 				38C47AAB273032000046341A /* MainController.swift */,
+				3827DFC52750B1C500A5121A /* cards_png */,
 				32279FF0272A310700FBBE77 /* Assets.xcassets */,
 				32279FF2272A310700FBBE77 /* LaunchScreen.storyboard */,
 				32279FF5272A310700FBBE77 /* Info.plist */,
@@ -174,6 +180,7 @@
 			files = (
 				3827DFBA2750B05400A5121A /* combinationToRank_bytes.json in Resources */,
 				3827DFC32750B05400A5121A /* primeProductToCombination_bytes.json in Resources */,
+				3827DFC62750B1C600A5121A /* cards_png in Resources */,
 				32279FF4272A310700FBBE77 /* LaunchScreen.storyboard in Resources */,
 				32279FF1272A310700FBBE77 /* Assets.xcassets in Resources */,
 				3827DFBE2750B05400A5121A /* uniqueToRanks_bytes.json in Resources */,
@@ -195,8 +202,9 @@
 				3827DFC42750B05400A5121A /* SPHModelCard.swift in Sources */,
 				38C47AAC273032000046341A /* MainController.swift in Sources */,
 				3827DFC22750B05400A5121A /* SPHEvaluator.swift in Sources */,
-				383F065827301552008F4D3B /* ViewController.swift in Sources */,
+				383F065827301552008F4D3B /* HostViewController.swift in Sources */,
 				3827DFBB2750B05400A5121A /* SPHModelDeck.swift in Sources */,
+				3827DFC82750B4DE00A5121A /* PokerViewController.swift in Sources */,
 				3827DFC12750B05400A5121A /* SPHModelTable.swift in Sources */,
 				32279FE8272A310500FBBE77 /* AppDelegate.swift in Sources */,
 				32279FEA272A310500FBBE77 /* SceneDelegate.swift in Sources */,
