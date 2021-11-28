@@ -1,4 +1,19 @@
-public struct Table {
+import Foundation
+
+public class Table: NSObject, NSCoding {
+    public func encode(with coder: NSCoder) {
+        coder.encode(dealtCards, forKey: "dealtCards")
+        coder.encode(burnt, forKey: "burnt")
+    }
+    
+    override init(){}
+    
+    public required convenience init?(coder: NSCoder) {
+        self.init()
+        dealtCards = coder.decodeObject(forKey: "dealtCards") as! [Card]
+        burnt = coder.decodeObject(forKey: "burnt") as! [Card]
+    }
+    
 
     var dealtCards = [Card]()
 
@@ -15,19 +30,19 @@ public struct Table {
 
     var turn: String {
         guard dealtCards.count > 3 else { return "" }
-        return dealtCards[3].description
+        return dealtCards[3].card_description
     }
 
     var river: String {
         guard dealtCards.count > 4 else { return "" }
-        return dealtCards[4].description
+        return dealtCards[4].card_description
     }
 
-    mutating func add(cards: [Card]) {
+    func add(cards: [Card]) {
         dealtCards += cards
     }
 
-    mutating func addToBurnt(card: Card) {
+    func addToBurnt(card: Card) {
         burnt.append(card)
     }
 

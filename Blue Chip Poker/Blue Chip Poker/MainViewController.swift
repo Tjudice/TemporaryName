@@ -1,22 +1,23 @@
 //
-//  HostViewController.swift
-//  NewMC
+//  ViewController.swift
+//  multipeer
 //
 //  Created by Akash Akkiraju on 11/22/21.
 //
 
-import Foundation
 import UIKit
 import MultiPeer
+import SwiftUI
 
-class HostViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
     var results : [String] = []
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -24,42 +25,10 @@ class HostViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "joinGameCell")
         
         MultiPeer.instance.delegate = self
-        MultiPeer.instance.initialize(serviceType: "demo-app", deviceName: UIDevice.current.name)
-        MultiPeer.instance.autoConnect()
-        tableView.reloadData()
-        
+        MultiPeer.instance.initialize(serviceType: "demo-app")
+        MultiPeer.instance.startAccepting()
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "joinGameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "joinGameCell")
-        // Display the results that we've found, if any. Otherwise, show "searching..."
-        if results.isEmpty {
-            cell.textLabel?.text = "Finding players..."
-            cell.textLabel?.textAlignment = .left
-            cell.textLabel?.textColor = .white
-            cell.backgroundColor = .black
-        } else {
-            let peer = results[indexPath.row]
-            cell.textLabel?.text = peer
-            cell.textLabel?.textAlignment = .left
-            cell.textLabel?.textColor = .white
-            cell.backgroundColor = .black
-        }
-        return cell
 
-    }
-    
-    @IBAction func game_start(_ sender: Any) {
-        MultiPeer.instance.stopSearching()
-        print(MultiPeer.instance.connectedDeviceNames)
-        performSegue(withIdentifier: "game_segue", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let VC = segue.destination as? PokerViewController else { return }
-        VC.segueVar = 1
-    }
-    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
     }
@@ -79,10 +48,44 @@ class HostViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultRows()
     }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "joinGameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "joinGameCell")
+        // Display the results that we've found, if any. Otherwise, show "searching..."
+        if results.isEmpty {
+            cell.textLabel?.text = "Searching for games..."
+            cell.textLabel?.textAlignment = .left
+            cell.textLabel?.textColor = .white
+            cell.backgroundColor = .black
+        } else {
+            let peer = results[indexPath.row]
+            cell.textLabel?.text = peer
+            cell.textLabel?.textAlignment = .left
+            cell.textLabel?.textColor = .white
+            cell.backgroundColor = .black
+        }
+        return cell
+    }
     
+    @IBAction func host_game(_ sender: Any) {
+        MultiPeer.instance.stopAccepting()
+        performSegue(withIdentifier: "host_segue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let VC = segue.destination as? PokerViewController else { return }
+        VC.segueVar = 2
+    }
+    
+    @IBAction func linkToPoker(_ sender: Any) {
+        if let url = NSURL(string: "https://bicyclecards.com/how-to-play/basics-of-poker/") {
+        UIApplication.shared.open(url as URL, options:[:], completionHandler:nil)
+
+        }
+    }
 }
 
-extension HostViewController: MultiPeerDelegate {
+extension MainViewController: MultiPeerDelegate {
     func multiPeer(didReceiveData data: Data, ofType type: UInt32, from peerID: MCPeerID) {
         return
     }

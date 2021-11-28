@@ -1,4 +1,21 @@
-public struct Dealer: SPHCardsDebug {
+import Foundation
+
+public class Dealer: NSObject, NSCoding, SPHCardsDebug {
+    public func encode(with coder: NSCoder) {
+        coder.encode(currentDeck, forKey: "currentDeck")
+        coder.encode(table, forKey: "table")
+        coder.encode(scores, forKey: "scores")
+        coder.encode(currentHandWinner, forKey: "currentHandWinner")
+    }
+    
+    public required convenience init?(coder: NSCoder) {
+        self.init()
+        self.currentDeck = coder.decodeObject(forKey: "currentDeck") as! Deck
+        self.table = coder.decodeObject(forKey: "table") as! Table
+        self.scores = coder.decodeObject(forKey: "scores") as! [String:Int]
+        self.currentHandWinner = coder.decodeObject(forKey: "currentHandWinner") as? Player
+    }
+    
 
     var evaluator: Evaluator
 
@@ -8,7 +25,7 @@ public struct Dealer: SPHCardsDebug {
 
     var verbose = false
 
-    init() {
+    override init() {
         currentDeck = Deck()
         table = Table()
         evaluator = Evaluator()
@@ -56,31 +73,31 @@ public struct Dealer: SPHCardsDebug {
 
     var scores = [String:Int]()
 
-    mutating func changeDeck() {
+    func changeDeck() {
         currentDeck = Deck()
     }
 
-    mutating func shuffleDeck() {
+    func shuffleDeck() {
         currentDeck.shuffle()
     }
     
-    mutating func removeCards(from player: inout Player) {
+    func removeCards(from player: inout Player) {
         player.cards = []
     }
 
-    mutating func deal(number: Int) -> [Card] {
+    func deal(number: Int) -> [Card] {
         return currentDeck.takeCards(number: number)
     }
 
-    mutating func dealHand() -> [Card] {
+    func dealHand() -> [Card] {
         return deal(number: 2)
     }
 
-    mutating func dealHand(to player: inout Player) {
+    func dealHand(to player: inout Player) {
         player.cards = dealHand()
     }
     
-    mutating func deal(cards: [String]) -> [Card] {
+    func deal(cards: [String]) -> [Card] {
         let upCardChars = cards.map({$0.uppercased().map({String($0)})})
         var cardsToDeal = [Card]()
         for cardChars in upCardChars {
@@ -94,11 +111,11 @@ public struct Dealer: SPHCardsDebug {
         return cardsToDeal
     }
     
-    mutating func deal(cards: [String], to player: inout Player) {
+    func deal(cards: [String], to player: inout Player) {
         player.cards = deal(cards: cards)
     }
     
-    mutating func deal(cards: [Card], to player: inout Player) {
+    func deal(cards: [Card], to player: inout Player) {
         var cardsToDeal = [Card]()
         for card in cards {
             guard let indexToRemove = currentDeck.cards.index(of: card) else {
@@ -110,7 +127,7 @@ public struct Dealer: SPHCardsDebug {
         player.cards = cardsToDeal
     }
 
-    @discardableResult mutating func dealFlop() -> [Card] {
+    @discardableResult func dealFlop() -> [Card] {
         table.dealtCards = []
         table.burnt = []
         let dealt = dealWithBurning(number: 3)
@@ -118,21 +135,21 @@ public struct Dealer: SPHCardsDebug {
         return dealt
     }
 
-    @discardableResult mutating func dealTurn() -> [Card] {
+    @discardableResult func dealTurn() -> [Card] {
         let dealt = dealWithBurning(number: 1)
         table.add(cards: dealt)
         return dealt
     }
 
-    @discardableResult mutating func dealRiver() -> [Card] {
+    @discardableResult func dealRiver() -> [Card] {
         return dealTurn()
     }
 
-    private mutating func burn() -> Card? {
+    private func burn() -> Card? {
         return currentDeck.takeOneCard()
     }
 
-    private mutating func dealWithBurning(number: Int) -> [Card] {
+    private func dealWithBurning(number: Int) -> [Card] {
         guard let burned = burn() else {
             return errorNotEnoughCards()
         }
@@ -140,13 +157,13 @@ public struct Dealer: SPHCardsDebug {
         return deal(number: number)
     }
 
-    mutating func evaluateHandAtRiver(for player: inout Player) {
+    func evaluateHandAtRiver(for player: inout Player) {
         player.hand = evaluateHandAtRiver(player: player)
     }
 
     func evaluateHandAtRiver(player: Player) -> (HandRank, [String]) {
         let sevenCards = table.dealtCards + player.cards
-        let cardsReps = sevenCards.map({ $0.description })
+        let cardsReps = sevenCards.map({ $0.card_description })
         // all 5 cards combinations from the 7 cards
         let perms = cardsReps.permutation(5)
         // TODO: do the permutations with rank/else instead of literal cards descriptions
@@ -165,7 +182,7 @@ public struct Dealer: SPHCardsDebug {
         return bestHand!
     }
 
-    mutating func updateHeadsUpWinner(player1: Player, player2: Player) {
+    func updateHeadsUpWinner(player1: Player, player2: Player) {
         currentHandWinner = findHeadsUpWinner(player1: player1, player2: player2)
     }
 

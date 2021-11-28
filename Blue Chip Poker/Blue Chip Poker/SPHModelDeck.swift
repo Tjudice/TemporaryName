@@ -1,14 +1,26 @@
+import Foundation
 
-public struct Deck: CanTakeCard, SPHCardsDebug {
+public class Deck: NSObject, NSCoding, CanTakeCard, SPHCardsDebug {
+    public func encode(with coder: NSCoder) {
+        coder.encode(cards, forKey: "cards")
+        coder.encode(capacity, forKey: "capacity")
+    }
+    
+    public required convenience init?(coder: NSCoder) {
+        self.init()
+        cards = coder.decodeObject(forKey: "cards") as! [Card]
+        capacity = coder.decodeInteger(forKey: "capacity")
+    }
+    
     
     let suits = ["♠","♣","♥","♦"]
     let ranks = ["A","K","Q","J","T","9","8","7","6","5","4","3","2"]
     
     public var cards = [Card]()
     
-    private let capacity = 52
+    public var capacity = 52
     
-    init() {
+    override init() {
         for thisSuit in suits {
             for thisRank in ranks {
                 cards.append(
@@ -18,11 +30,11 @@ public struct Deck: CanTakeCard, SPHCardsDebug {
         }
     }
     
-    mutating func shuffle() {
+    func shuffle() {
         cards.shuffle()
     }
     
-    mutating func takeCards(number: Int) -> [Card] {
+    func takeCards(number: Int) -> [Card] {
         guard self.count >= number else {
             return errorNotEnoughCards()
         }

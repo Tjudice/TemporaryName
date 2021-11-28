@@ -1,8 +1,28 @@
 import Foundation
 
-public struct Player: CanTakeCard {
+public class Player: NSObject, NSCoding, CanTakeCard {
+    public func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        //coder.encode(historyOfDealtCards, forKey: "historyOfDealtCards")
+        coder.encode(frequentHands, forKey: "frequentHands")
+        coder.encode(cards, forKey: "cards")
+//        coder.encode(hand?.0.rank, forKey: "hand_rank")
+//        coder.encode(hand?.1, forKey: "hand_name")
+    }
+    
+    public required convenience init?(coder: NSCoder) {
+        let name = coder.decodeObject(forKey: "name") as! String
+        self.init(name: name)
+        //historyOfDealtCards = coder.decodeObject(forKey: "historyOfDealtCards") as! [(Card, Card, Date)]
+        frequentHands = coder.decodeObject(forKey: "frequentHands") as! [String:Int]
+//        let hand_r = coder.decodeInteger(forKey: "hand_rank")
+//        let hand_s = coder.decodeObject(forKey: "hand_name") as! [String]
+//        hand = (HandRank(rank: hand_r),hand_s)
+        cards = coder.decodeObject(forKey: "cards") as! [Card]
+    }
+    
 
-    init() {}
+    override init() {}
 
     init(name: String) {
         self.name = name
@@ -25,7 +45,7 @@ public struct Player: CanTakeCard {
     }
 
     var cardsHistory: String {
-        let mapped = historyOfDealtCards.map { $0.0.description + " " + $0.1.description }
+        let mapped = historyOfDealtCards.map { $0.0.card_description + " " + $0.1.card_description }
         return mapped.joined(separator: ", ")
     }
 
@@ -33,7 +53,7 @@ public struct Player: CanTakeCard {
         didSet {
             let tu = (cards[0], cards[1], Date())
             historyOfDealtCards.append(tu)
-            let fqname = "\(tu.0.description),\(tu.1.description)"
+            let fqname = "\(tu.0.card_description),\(tu.1.card_description)"
             if frequentHands[fqname] == nil {
                 frequentHands[fqname] = 1
             } else {

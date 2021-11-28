@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B961F60231629C39AD328AE /* Pods_Blue_Chip_Poker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4983A700F953A0CA8D7B61E6 /* Pods_Blue_Chip_Poker.framework */; };
 		32279FE8272A310500FBBE77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32279FE7272A310500FBBE77 /* AppDelegate.swift */; };
 		32279FEA272A310500FBBE77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32279FE9272A310500FBBE77 /* SceneDelegate.swift */; };
 		32279FEF272A310500FBBE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FED272A310500FBBE77 /* Main.storyboard */; };
@@ -28,7 +29,7 @@
 		3827DFC82750B4DE00A5121A /* PokerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827DFC72750B4DE00A5121A /* PokerViewController.swift */; };
 		383F0656272F9942008F4D3B /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 383F0655272F9942008F4D3B /* P2PShare */; };
 		383F065827301552008F4D3B /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F065727301552008F4D3B /* HostViewController.swift */; };
-		38C47AAC273032000046341A /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C47AAB273032000046341A /* MainController.swift */; };
+		38C47AAC273032000046341A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C47AAB273032000046341A /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +55,10 @@
 		3827DFC52750B1C500A5121A /* cards_png */ = {isa = PBXFileReference; lastKnownFileType = folder; path = cards_png; sourceTree = "<group>"; };
 		3827DFC72750B4DE00A5121A /* PokerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerViewController.swift; sourceTree = "<group>"; };
 		383F065727301552008F4D3B /* HostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
-		38C47AAB273032000046341A /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		38C47AAB273032000046341A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3C65FAE0B10123CD0BB9E999 /* Pods-Blue Chip Poker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blue Chip Poker.debug.xcconfig"; path = "Target Support Files/Pods-Blue Chip Poker/Pods-Blue Chip Poker.debug.xcconfig"; sourceTree = "<group>"; };
+		4983A700F953A0CA8D7B61E6 /* Pods_Blue_Chip_Poker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blue_Chip_Poker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F367FB04A713ABFA093EFE57 /* Pods-Blue Chip Poker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blue Chip Poker.release.xcconfig"; path = "Target Support Files/Pods-Blue Chip Poker/Pods-Blue Chip Poker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				383F0656272F9942008F4D3B /* P2PShare in Frameworks */,
+				1B961F60231629C39AD328AE /* Pods_Blue_Chip_Poker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,8 @@
 			children = (
 				32279FE6272A310500FBBE77 /* Blue Chip Poker */,
 				32279FE5272A310500FBBE77 /* Products */,
+				53F96EDDCCF88C107747895D /* Pods */,
+				DD134B2CE72F7AC383CF230B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,12 +97,14 @@
 			children = (
 				32279FE7272A310500FBBE77 /* AppDelegate.swift */,
 				32279FE9272A310500FBBE77 /* SceneDelegate.swift */,
-				32279FED272A310500FBBE77 /* Main.storyboard */,
-				3827DFC72750B4DE00A5121A /* PokerViewController.swift */,
+				38C47AAB273032000046341A /* MainViewController.swift */,
 				383F065727301552008F4D3B /* HostViewController.swift */,
+				3827DFC72750B4DE00A5121A /* PokerViewController.swift */,
+				32279FED272A310500FBBE77 /* Main.storyboard */,
 				3827DFAE2750B05300A5121A /* combinationToRank_bytes.json */,
 				3827DFB02750B05300A5121A /* flushes_bytes.json */,
 				3827DFB72750B05300A5121A /* primeProductToCombination_bytes.json */,
+				3827DFB22750B05300A5121A /* uniqueToRanks_bytes.json */,
 				3827DFB42750B05300A5121A /* SPHByteRanks.swift */,
 				3827DFB62750B05300A5121A /* SPHEvaluator.swift */,
 				3827DFB12750B05300A5121A /* SPHExtensions.swift */,
@@ -104,14 +113,29 @@
 				3827DFAF2750B05300A5121A /* SPHModelDeck.swift */,
 				3827DFAD2750B05300A5121A /* SPHModelPlayer.swift */,
 				3827DFB52750B05300A5121A /* SPHModelTable.swift */,
-				3827DFB22750B05300A5121A /* uniqueToRanks_bytes.json */,
-				38C47AAB273032000046341A /* MainController.swift */,
 				3827DFC52750B1C500A5121A /* cards_png */,
 				32279FF0272A310700FBBE77 /* Assets.xcassets */,
 				32279FF2272A310700FBBE77 /* LaunchScreen.storyboard */,
 				32279FF5272A310700FBBE77 /* Info.plist */,
 			);
 			path = "Blue Chip Poker";
+			sourceTree = "<group>";
+		};
+		53F96EDDCCF88C107747895D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C65FAE0B10123CD0BB9E999 /* Pods-Blue Chip Poker.debug.xcconfig */,
+				F367FB04A713ABFA093EFE57 /* Pods-Blue Chip Poker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DD134B2CE72F7AC383CF230B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4983A700F953A0CA8D7B61E6 /* Pods_Blue_Chip_Poker.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32279FF8272A310700FBBE77 /* Build configuration list for PBXNativeTarget "Blue Chip Poker" */;
 			buildPhases = (
+				8C924F7A5925384DC404FD33 /* [CP] Check Pods Manifest.lock */,
 				32279FE0272A310500FBBE77 /* Sources */,
 				32279FE1272A310500FBBE77 /* Frameworks */,
 				32279FE2272A310500FBBE77 /* Resources */,
+				268C06D9481FCC77EDCD7008 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +217,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		268C06D9481FCC77EDCD7008 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blue Chip Poker/Pods-Blue Chip Poker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blue Chip Poker/Pods-Blue Chip Poker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blue Chip Poker/Pods-Blue Chip Poker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C924F7A5925384DC404FD33 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Blue Chip Poker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		32279FE0272A310500FBBE77 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -200,7 +268,7 @@
 				3827DFBF2750B05400A5121A /* SPHModelDealer.swift in Sources */,
 				3827DFBD2750B05400A5121A /* SPHExtensions.swift in Sources */,
 				3827DFC42750B05400A5121A /* SPHModelCard.swift in Sources */,
-				38C47AAC273032000046341A /* MainController.swift in Sources */,
+				38C47AAC273032000046341A /* MainViewController.swift in Sources */,
 				3827DFC22750B05400A5121A /* SPHEvaluator.swift in Sources */,
 				383F065827301552008F4D3B /* HostViewController.swift in Sources */,
 				3827DFBB2750B05400A5121A /* SPHModelDeck.swift in Sources */,
@@ -352,6 +420,7 @@
 		};
 		32279FF9272A310700FBBE77 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C65FAE0B10123CD0BB9E999 /* Pods-Blue Chip Poker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -384,6 +453,7 @@
 		};
 		32279FFA272A310700FBBE77 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F367FB04A713ABFA093EFE57 /* Pods-Blue Chip Poker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -46,7 +46,7 @@ public extension SPHCardsDebug {
 public extension Sequence where Iterator.Element == Card {
     
     public var descriptions: [String] {
-        return self.map { $0.description }
+        return self.map { $0.card_description }
     }
     
     public var spacedDescriptions: String {

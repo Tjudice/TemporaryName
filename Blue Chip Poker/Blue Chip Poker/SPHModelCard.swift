@@ -1,17 +1,28 @@
 import Foundation
 
-public struct Card {
+public class Card: NSObject, NSCoding {
+    public func encode(with coder: NSCoder) {
+        coder.encode(suit, forKey: "suit")
+        coder.encode(rank, forKey: "rank")
+    }
+    
+    public required convenience init?(coder: NSCoder) {
+        let suit = coder.decodeObject(forKey: "suit") as! String
+        let rank = coder.decodeObject(forKey: "rank") as! String
+        self.init(suit: suit, rank: rank)
+    }
+    
 
     let suit: String
 
     let rank: String
 
-    let description: String
+    let card_description: String
 
     init(suit: String, rank: String) {
         self.suit = suit
         self.rank = rank
-        self.description = "\(rank)\(suit)"
+        self.card_description = "\(rank)\(suit)"
     }
 
     var name: String {

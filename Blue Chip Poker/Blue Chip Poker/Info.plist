@@ -5,6 +5,7 @@
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_demo._tcp</string>
+		<string>_demo-app._tcp</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
