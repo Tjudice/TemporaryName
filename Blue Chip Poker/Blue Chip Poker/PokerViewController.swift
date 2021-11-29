@@ -24,6 +24,8 @@ class GameState: NSObject, NSCoding{
     var flop_done : Bool = false
     var turn_done : Bool = false
     var river_done : Bool = false
+    var preflop : Bool = true
+    var players_round_bet : [Int] = []
     
     override init(){}
     
@@ -42,6 +44,8 @@ class GameState: NSObject, NSCoding{
         flop_done = coder.decodeBool(forKey: "flop_done")
         turn_done = coder.decodeBool(forKey: "turn_done")
         river_done = coder.decodeBool(forKey: "river_done")
+        preflop = coder.decodeBool(forKey: "preflop")
+        players_round_bet = coder.decodeObject(forKey: "players_round_bet") as! [Int]
     }
     
     func encode(with coder: NSCoder) {
@@ -58,6 +62,8 @@ class GameState: NSObject, NSCoding{
         coder.encode(flop_done, forKey: "flop_done")
         coder.encode(turn_done, forKey: "turn_done")
         coder.encode(river_done, forKey: "river_done")
+        coder.encode(preflop, forKey: "preflop")
+        coder.encode(players_round_bet, forKey: "players_round_bet")
     }
 }
 
@@ -121,13 +127,16 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                 curr_players.append(Player(name: devices[i]))
                 curr_funds.append(100)
                 players_in_round.append(true)
+                curr_state.players_round_bet.append(-1)
             }
+            curr_state.players_round_bet.append(-1)
             
             print(curr_funds.count)
             
-            curr_state.big_blind_ind = (0-2)%curr_players.count
-            curr_state.small_blind_ind = (0-1)%curr_players.count
-            curr_state.curr_player_ind = 1
+            curr_state.big_blind_ind = 0%curr_players.count
+            curr_state.small_blind_ind = 1%curr_players.count
+            curr_state.dealer_ind = 2%curr_players.count
+            curr_state.curr_player_ind = 3%curr_players.count
             curr_state.players = curr_players
             curr_state.funds_players = curr_funds
             curr_state.players_round = players_in_round
@@ -182,19 +191,23 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     func resetRound(){
 
         curr_state.dealer_ind = (curr_state.dealer_ind+1) % curr_state.players.count
+        curr_state.preflop = true
         curr_state.flop_done = false
         curr_state.turn_done = false
         curr_state.river_done = false
         curr_state.players_round = [Bool]()
         curr_state.money_in_pot = 0
         curr_state.prev_bet = 0
-        curr_state.big_blind_ind = (curr_state.dealer_ind-2)%curr_state.players.count
-        curr_state.small_blind_ind = (curr_state.dealer_ind-1)%curr_state.players.count
+        curr_state.big_blind_ind = (curr_state.big_blind_ind+1)%curr_state.players.count
+        curr_state.small_blind_ind = (curr_state.small_blind_ind+1)%curr_state.players.count
+        curr_state.dealer_ind = (curr_state.dealer_ind+1)%curr_state.players.count
         curr_state.curr_player_ind = (curr_state.dealer_ind + 1)%curr_state.players.count
         curr_state.dealer = Dealer(evaluator: Evaluator())
+        curr_state.players_round_bet = [Int]()
         for i in 0...(curr_state.players.count-1){
             curr_state.players[i].cards = curr_state.dealer.dealHand()
             curr_state.players_round.append(true)
+            curr_state.players_round_bet.append(0)
             if(i == 0){
                 p1card1.image = UIImage(named: "back_w")
                 p1card2.image = UIImage(named: "back_w")
@@ -209,49 +222,86 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             }
         }
     }
-
-    func handleTurn(){
-        // check if dealer has to raise/check before revealing flop and when to move to next betting round
-        // Game over label
-        if (curr_state.dealer_ind == curr_state.curr_player_ind){
-            if (curr_state.flop_done == false){
-                curr_state.dealer.dealFlop()
-                curr_state.flop_done = true
-            }
-            else if (curr_state.turn_done == false){
-                curr_state.dealer.dealTurn()
-                curr_state.turn_done = true
-            }
-            else if (curr_state.river_done == false){
-                curr_state.dealer.dealRiver()
-                curr_state.river_done = true
-            }
-            else{
-                // check for folded players before
-                // make it a for loop and reveal all cards and print best hand
-                
-                for i in 0...(curr_state.players.count-1){
-                    curr_state.players[i].hand = curr_state.dealer.evaluateHandAtRiver(player: curr_state.players[i])
+    
+    func resetBets(){
+        for i in 0...curr_state.players_round_bet.count-1{
+            curr_state.players_round_bet[i] = -1
+        }
+    }
+    
+    func handleAction(){
+        var curr_bet = curr_state.players_round_bet[curr_state.curr_player_ind]
+        if (curr_bet == -1) {
+            curr_state.players_round_bet[curr_state.curr_player_ind] = 0
+            curr_bet = 0
+        }
+        var end_action = true
+            for i in 1...curr_state.players.count{
+                let temp_player_ind = (curr_state.curr_player_ind+i)%curr_state.players.count
+                if(curr_state.players_round_bet[temp_player_ind] != curr_bet && curr_state.players_round[temp_player_ind] == true) {
+                    end_action = false;
+                    nextPlayer(index: curr_state.curr_player_ind)
+                    break;
                 }
-                
-                var winner = curr_state.players[0].name
-                var win_ind = 0
-                for i in 1...(curr_state.players.count-1){
-                    let temp_win = curr_state.dealer.findHeadsUpWinner(player1: curr_state.players[win_ind], player2:curr_state.players[i]).name
-                    if(temp_win != winner){
-                        win_ind = i
-                        winner = temp_win
+            }
+            if (end_action == true) {
+                resetBets()
+                self.curr_state.prev_bet = 0
+                if (curr_state.flop_done == false) {
+                    curr_state.preflop = false
+                    curr_state.dealer.dealFlop()
+                    curr_state.flop_done = true
+                    print(curr_state.small_blind_ind)
+                    if (curr_state.players_round[curr_state.small_blind_ind] == false) {
+                        nextPlayer(index: curr_state.small_blind_ind)
+                    }
+                    else {
+                        curr_state.curr_player_ind = curr_state.small_blind_ind
                     }
                 }
-                curr_state.funds_players[win_ind] += curr_state.money_in_pot
+                else if (curr_state.turn_done == false){
+                    curr_state.dealer.dealTurn()
+                    curr_state.turn_done = true
+                    nextPlayer(index: curr_state.curr_player_ind)
+                }
+                else if (curr_state.river_done == false){
+                    curr_state.dealer.dealRiver()
+                    curr_state.river_done = true
+                    nextPlayer(index: curr_state.curr_player_ind)
+                }
+                else{
+                    // check for folded players before
+                    // make it a for loop and reveal all cards and print best hand
+                    
+                    for i in 0...(curr_state.players.count-1){
+                        curr_state.players[i].hand = curr_state.dealer.evaluateHandAtRiver(player: curr_state.players[i])
+                    }
+                    
+                    var winner = curr_state.players[0].name
+                    var win_ind = 0
+                    for i in 1...(curr_state.players.count-1){
+                        let temp_win = curr_state.dealer.findHeadsUpWinner(player1: curr_state.players[win_ind], player2:curr_state.players[i]).name
+                        if(temp_win != winner){
+                            win_ind = i
+                            winner = temp_win
+                        }
+                    }
+                    curr_state.funds_players[win_ind] += curr_state.money_in_pot
 
-                print(winner)
-  
-                // pop up and remove any players not willinnng to continue
+                    print(winner)
+      
+                    // pop up and remove any players not willinnng to continue
 
-                resetRound()
-            }
+                    resetRound()
+                }
+                
         }
+    }
+
+    func handleBoard(){
+        // check if dealer has to raise/check before revealing flop and when to move to next betting round
+        // Game over label
+        handleAction()
         MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
         show_curr_player_cards()
     }
@@ -345,11 +395,12 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
 
     func bet_pop_up(bet: Bool){
         var alert_txt = "Raise"
+        var alert = UIAlertController(title: alert_txt + "!" , message: "", preferredStyle: .alert)
         if bet == true {
             alert_txt = "Bet"
+            alert = UIAlertController(title: alert_txt + "!" , message: "Amount should be a minimum of $" + String(curr_state.prev_bet), preferredStyle: .alert)
         }
-        let alert = UIAlertController(title: alert_txt + "!" , message: "Amount should be a minimum of $" + String(curr_state.prev_bet), preferredStyle: .alert)
-        
+
         alert.addTextField { (textField) in
             textField.placeholder = "Enter the amount (in dollars)"
         }
@@ -359,17 +410,31 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
 
             // this code runs when the user hits the "Place bet!" button
 
-            let raised = Int(alert.textFields![0].text!)
+            var raised = Int(alert.textFields![0].text!)
             
             if (raised! < self.curr_state.funds_players[self.curr_state.curr_player_ind]){
                 // Notification
             }
             
+            if (self.curr_state.players_round_bet[self.curr_state.curr_player_ind] == -1 ){
+                self.curr_state.players_round_bet[self.curr_state.curr_player_ind] = 0
+            }
+            let temp = self.curr_state.prev_bet
+            self.curr_state.prev_bet = raised!
+            if (bet == false) {
+                raised = raised! + temp
+     
+                
+            }
             self.curr_state.money_in_pot += raised!
             self.potLabel.text = "Pot: $" + String(self.curr_state.money_in_pot)
+
             self.curr_state.funds_players[self.curr_state.curr_player_ind] -= raised!
-            self.curr_state.prev_bet = raised!
-            self.nextPlayer()
+            
+
+            self.curr_state.players_round_bet[self.curr_state.curr_player_ind] += raised!
+            self.handleBoard()
+            //self.nextPlayer()
             print(raised!)
 
         })
@@ -381,20 +446,21 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
 
     }
     
-    func nextPlayer(){
+        func nextPlayer(index: Int){
         var i = 1
         while (i <= curr_state.players.count &&
-               curr_state.players_round[(curr_state.curr_player_ind + i)%curr_state.players.count] == false){
+               curr_state.players_round[(index + i)%curr_state.players.count] == false){
             i += 1
         }
         
-        curr_state.curr_player_ind =  (curr_state.curr_player_ind + i) % curr_state.players.count
-        handleTurn()
+        curr_state.curr_player_ind =  (index + i) % curr_state.players.count
+        //handleBoard()
     }
     
     @IBAction func callFold(_ sender: Any) {
         curr_state.players_round[curr_state.curr_player_ind] = false
-        nextPlayer()
+        //nextPlayer()
+        handleBoard()
     }
 
     @IBAction func callRaise(_ sender: Any) {
@@ -407,11 +473,16 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     }
 
     @IBAction func callCheck(_ sender: Any) {
-
-        curr_state.money_in_pot += curr_state.prev_bet
+        let amount = self.curr_state.prev_bet
+        curr_state.money_in_pot += amount
         potLabel.text = "Pot: $" + String(curr_state.money_in_pot)
-        curr_state.funds_players[curr_state.curr_player_ind] -= curr_state.prev_bet
-        nextPlayer()
+        if (self.curr_state.players_round_bet[self.curr_state.curr_player_ind] == -1 ){
+            self.curr_state.players_round_bet[self.curr_state.curr_player_ind] = 0
+        }
+        curr_state.funds_players[curr_state.curr_player_ind] -= amount
+        self.curr_state.players_round_bet[self.curr_state.curr_player_ind] += amount
+        //nextPlayer()
+        handleBoard()
     }
 
 
