@@ -28,6 +28,8 @@ class GameState: NSObject, NSCoding{
     var showdown : Bool = false
     var win_index : Int = -1
     var players_round_bet : [Int] = []
+    var stats : [String : [Int]] = [:]
+    var total_rounds = 0
     
     override init(){}
     
@@ -50,6 +52,8 @@ class GameState: NSObject, NSCoding{
         showdown = coder.decodeBool(forKey: "showdown")
         win_index = coder.decodeInteger(forKey: "win_index")
         players_round_bet = coder.decodeObject(forKey: "players_round_bet") as! [Int]
+        stats = coder.decodeObject(forKey: "stats") as! [String : [Int]]
+        total_rounds = coder.decodeInteger(forKey: "total_rounds")
     }
     
     func encode(with coder: NSCoder) {
@@ -70,6 +74,8 @@ class GameState: NSObject, NSCoding{
         coder.encode(showdown, forKey: "showdown")
         coder.encode(players_round_bet, forKey: "players_round_bet")
         coder.encode(win_index, forKey: "win_index")
+        coder.encode(stats, forKey: "stats")
+        coder.encode(total_rounds, forKey: "total_rounds")
     }
 }
 
@@ -86,15 +92,17 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     @IBOutlet weak var player1Label: UILabel!
     @IBOutlet weak var p1card1: UIImageView!
     @IBOutlet weak var p1card2: UIImageView!
+    @IBOutlet weak var p1Funds: UILabel!
     
     @IBOutlet weak var player2Label: UILabel!
     @IBOutlet weak var p2card1: UIImageView!
     @IBOutlet weak var p2card2: UIImageView!
+    @IBOutlet weak var p2Funds: UILabel!
     
     @IBOutlet weak var player3Label: UILabel!
     @IBOutlet weak var p3card1: UIImageView!
     @IBOutlet weak var p3card2: UIImageView!
-    
+    @IBOutlet weak var p3Funds: UILabel!
     
     @IBOutlet weak var potLabel: UILabel!
     
@@ -115,12 +123,15 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     var segueVar : Int = 0
     var alljoined : Int = 0
     var triggered : Int  = 0
+    var clicked : Int = 0
+    var initial_connected : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MultiPeer.instance.delegate = self
         print("Poker %d", MultiPeer.instance.connectedDeviceNames)
+        initial_connected = MultiPeer.instance.connectedDeviceNames.count
         
         
         if (segueVar == 1){
@@ -130,8 +141,10 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             var curr_players = [Player(name: UIDevice.current.name)]
             var curr_funds = [100]
             var players_in_round = [true]
+            curr_state.stats[UIDevice.current.name] = [0,0]
             
             for i in 0...(devices.count-1){
+                curr_state.stats[devices[i]] = [0,0]
                 curr_players.append(Player(name: devices[i]))
                 curr_funds.append(100)
                 players_in_round.append(true)
@@ -155,7 +168,9 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                 curr_state.players[i].cards = curr_state.dealer.dealHand()
             }
             
+            //triggered = 1
             MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
+            MultiPeer.instance.send(object: "HI", type: DataType.String.rawValue)
             hideAllButtons()
         
         }
@@ -174,30 +189,48 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
           case DataType.GameState.rawValue:
             let state:GameState = data.convert() as! GameState
                 curr_state = state
-                print("RECEIVED")
-            show_curr_player_cards()
+                if triggered == 1{
+                    show_curr_player_cards()
+                }
             break
             
           case DataType.String.rawValue:
             let state = data.convert() as! String
-            if (state == "HI" && segueVar == 1){
+            if (state == "HI"){
                 alljoined += 1
-                if(alljoined == MultiPeer.instance.connectedDeviceNames.count){
+                if(alljoined >= initial_connected){
+                    MultiPeer.instance.send(object: "Trigger", type: DataType.String.rawValue)
                     MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
-                    alljoined = 0
                     show_curr_player_cards()
+                    triggered = 1
                 }
             }
-            if (state == "Continue" && segueVar == 1){
+            if(state == "Continue"){
                 alljoined += 1
-                if(alljoined == MultiPeer.instance.connectedDeviceNames.count && triggered == 1){
-                    resetRound()
-                    curr_state.showdown = false
-                    MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
-                    alljoined = 0
-                    triggered = 0
-                    show_curr_player_cards()
+                if(alljoined >= initial_connected){
+                    if(clicked == 1){
+                        resetRound()
+                        MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
+                        show_curr_player_cards()
+                        clicked = 0
+                        MultiPeer.instance.send(object: "Reset", type: DataType.String.rawValue)
+                    }
                 }
+            }
+            
+            
+            if(state == "Trigger"){
+                triggered = 1
+            }
+            if(state == "Reset"){
+                alljoined = 0
+                clicked = 0
+            }
+            if(state == "Delete"){
+               initial_connected -= 1
+            }
+            if(state == "End"){
+                summary()
             }
             break
                     
@@ -217,14 +250,17 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             if(i == 0){
                 p1card1.image = UIImage(named: "back_w")
                 p1card2.image = UIImage(named: "back_w")
+                player1Label.textColor = .white
             }
             if(i == 1){
                 p2card1.image = UIImage(named: "back_w")
                 p2card2.image = UIImage(named: "back_w")
+                player2Label.textColor = .white
             }
             if (i == 2){
                 p3card1.image = UIImage(named: "back_w")
                 p3card2.image = UIImage(named: "back_w")
+                player3Label.textColor = .white
             }
         }
         
@@ -251,6 +287,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         curr_state.curr_player_ind = (curr_state.dealer_ind + 1)%curr_state.players.count
         curr_state.dealer = Dealer(evaluator: Evaluator())
         curr_state.players_round_bet = [Int]()
+        curr_state.showdown = false
         for i in 0...(curr_state.players.count-1){
             curr_state.players[i] = Player(name: curr_state.players[i].name!)
             curr_state.players[i].cards = curr_state.dealer.dealHand()
@@ -292,13 +329,12 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             curr_state.funds_players[non_folded_id] += curr_state.money_in_pot
             //resetRound()
             curr_state.showdown = true
+            curr_state.total_rounds += 1
+            curr_state.stats[curr_state.players[curr_state.win_index].name!]![0] += 1
+            curr_state.stats[curr_state.players[curr_state.win_index].name!]![1] += curr_state.money_in_pot
             return
         }
-        var curr_bet = self.curr_state.prev_bet
-        if (curr_bet == -1) {
-            curr_state.players_round_bet[curr_state.curr_player_ind] = 0
-            curr_bet = 0
-        }
+        let curr_bet = max_bet_in_round()
         var end_action = true
             for i in 1...curr_state.players.count{
                 let temp_player_ind = (curr_state.curr_player_ind+i)%curr_state.players.count
@@ -359,19 +395,37 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                             }
                         }
                     }
-      
+                    curr_state.stats[winner]![0] += 1
+                    curr_state.stats[winner]![1] += curr_state.money_in_pot
                     curr_state.win_index = win_ind
                     curr_state.funds_players[win_ind] += curr_state.money_in_pot
                     curr_state.showdown = true
+                    curr_state.total_rounds += 1
                 }
                 
         }
+    }
+    
+    func summary(){
+        let rounds_won = String(curr_state.stats[UIDevice.current.name]![0])
+        let funds_won = String(curr_state.stats[UIDevice.current.name]![1])
+        let total = String(curr_state.total_rounds)
+        let alert = UIAlertController(title: "Summary" , message: "Rounds won: " + rounds_won + "/" + total + "\nMoney gained/lost: " + funds_won, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler:  { alt -> Void in
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            self.present(nextViewController, animated:true, completion:nil)
+        })
+        alert.addAction(okAction)
+
+        self.present(alert, animated: true, completion: nil)
     }
     
     func announceWinner(){
         showdown()
         hideAllButtons()
         gameStat.text = "Waiting for other players"
+        potLabel.text = "Pot: $0"
         var non_folded = 0
         for i in 0...curr_state.players.count-1{
             if(curr_state.players_round[i] == true){
@@ -390,22 +444,42 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                                           "\nWinning Hand: " + handName + "\n" + hand + "\nDo you wish to continue?", preferredStyle: .alert)
         }
 
-        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        let continueAction = UIAlertAction(title:  "Yes!" , style: .default, handler: { alt -> Void in
-            if(self.segueVar == 1){
-                self.triggered = 1
+        self.alljoined = 0
+        MultiPeer.instance.send(object: "Reset", type: DataType.String.rawValue)
+        
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler:  { alt -> Void in
+            var ind = 0
+            for i in 0...self.curr_state.players.count-1{
+                if self.curr_state.players[i].name == UIDevice.current.name{
+                    ind = i
+                    break
+                }
             }
-            
+            self.clicked = 1
+            self.curr_state.players.remove(at: ind)
+            if self.curr_state.players.count <= 1{
+                MultiPeer.instance.send(object: "End", type: DataType.String.rawValue)
+                self.summary()
+                return
+            }
+            self.resetRound()
+            self.summary()
+            self.initial_connected = 10
+            MultiPeer.instance.send(object: "Delete", type: DataType.String.rawValue)
+            MultiPeer.instance.send(object: self.curr_state, type: DataType.GameState.rawValue)
+        })
+        let continueAction = UIAlertAction(title:  "Yes!" , style: .default, handler: { alt -> Void in
+            self.clicked = 1
             MultiPeer.instance.send(object: "Continue", type: DataType.String.rawValue)
             self.hideAllCards()
-            if(self.alljoined == MultiPeer.instance.connectedDeviceNames.count && self.triggered == 1){
+            if(self.alljoined >= self.initial_connected){
                 self.resetRound()
-                self.curr_state.showdown = false
                 MultiPeer.instance.send(object: self.curr_state, type: DataType.GameState.rawValue)
-                self.alljoined = 0
-                self.triggered = 0
                 self.show_curr_player_cards()
+                self.clicked = 0
+                MultiPeer.instance.send(object: "Reset", type: DataType.String.rawValue)
             }
+            print(MultiPeer.instance.connectedDeviceNames.count)
             
         })
 
@@ -446,6 +520,9 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
 
     func show_curr_player_cards(){
         // Show folded beside folded usernames and big blind, small blind, and current player
+        if curr_state.players.count == 1{
+            summary()
+        }
         
         showTableCards()
         var index = 0
@@ -455,17 +532,17 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                 index = i
             }
             if(curr_state.curr_player_ind == 0){
-                player1Label.textColor = .tintColor
+                player1Label.textColor = .orange
                 player2Label.textColor = .white
                 player3Label.textColor = .white
             }
             if(curr_state.curr_player_ind == 1){
-                player2Label.textColor = .tintColor
+                player2Label.textColor = .orange
                 player1Label.textColor = .white
-                player3Label.textColor = .cyan
+                player3Label.textColor = .white
             }
             if(curr_state.curr_player_ind == 2){
-                player3Label.textColor = .tintColor
+                player3Label.textColor = .orange
                 player2Label.textColor = .white
                 player1Label.textColor = .white
             }
@@ -484,6 +561,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             p3card1.isHidden = true
             p3card2.isHidden = true
             player3Label.isHidden = true
+            p3Funds.isHidden = true
         }
         
         let p_cards = getImages(for: curr_state.players[index].cards)
@@ -529,12 +607,11 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
 
     func bet_pop_up(bet: Bool){
         var alert_txt = "Raise"
-        var alert = UIAlertController(title: alert_txt + "!" , message: "", preferredStyle: .alert)
         if bet == true {
             alert_txt = "Bet"
-            alert = UIAlertController(title: alert_txt + "!" , message: "Amount should be a minimum of $" + String(curr_state.prev_bet), preferredStyle: .alert)
+            curr_state.prev_bet = 1
         }
-
+        let alert = UIAlertController(title: alert_txt + "!" , message: "", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Enter the amount (in dollars)"
         }
@@ -548,10 +625,10 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             if (self.curr_state.players_round_bet[self.curr_state.curr_player_ind] == -1 ){
                 self.curr_state.players_round_bet[self.curr_state.curr_player_ind] = 0
             }
-            let temp = self.curr_state.prev_bet
-            self.curr_state.prev_bet = raised!
+//            let temp = self.curr_state.prev_bet
+//            self.curr_state.prev_bet = raised!
             if (bet == false) {
-                raised = raised! + temp
+                raised = raised! + self.max_bet_in_round() - self.curr_state.players_round_bet[self.curr_state.curr_player_ind ]
             }
 
             if (raised! > self.curr_state.funds_players[self.curr_state.curr_player_ind]){
@@ -561,14 +638,14 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                 })
                 alert_no_funds.addAction(try_again_action)
                 self.present(alert_no_funds, animated: true, completion: nil)
-                self.curr_state.prev_bet = temp
+//                self.curr_state.prev_bet = temp
                 return
             }
-            
             self.curr_state.money_in_pot += raised!
             self.potLabel.text = "Pot: $" + String(self.curr_state.money_in_pot)
 
             self.curr_state.funds_players[self.curr_state.curr_player_ind] -= raised!
+            self.curr_state.stats[self.curr_state.players[self.curr_state.curr_player_ind].name!]![1] -= raised!
             
 
             self.curr_state.players_round_bet[self.curr_state.curr_player_ind] += raised!
@@ -605,15 +682,28 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         bet_pop_up(bet: false)
 
     }
+    
+    func max_bet_in_round() -> Int{
+        var ans = -1
+        for i in 0...self.curr_state.players.count-1{
+            if(curr_state.players_round[i] == true){
+                if curr_state.players_round_bet[i] > ans{
+                    ans = curr_state.players_round_bet[i]
+                }
+            }
+        }
+        return ans
+    }
 
     @IBAction func callCheck(_ sender: Any) {
-        let amount = self.curr_state.prev_bet
-        curr_state.money_in_pot += amount
-        potLabel.text = "Pot: $" + String(curr_state.money_in_pot)
         if (self.curr_state.players_round_bet[self.curr_state.curr_player_ind] == -1 ){
             self.curr_state.players_round_bet[self.curr_state.curr_player_ind] = 0
         }
+        let amount = max_bet_in_round() - curr_state.players_round_bet[curr_state.curr_player_ind]
+        curr_state.money_in_pot += amount
+        potLabel.text = "Pot: $" + String(curr_state.money_in_pot)
         curr_state.funds_players[curr_state.curr_player_ind] -= amount
+        self.curr_state.stats[self.curr_state.players[self.curr_state.curr_player_ind].name!]![1] -= amount
         self.curr_state.players_round_bet[self.curr_state.curr_player_ind] += amount
         handleBoard()
     }
@@ -664,24 +754,30 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             flop5.image = flop_cards?[4]
         }
         for i in 0...(curr_state.players.count-1){
+            if(i==0){
+                p1Funds.text = "$" + String(curr_state.funds_players[i])
+            }
+            if(i==1){
+                p2Funds.text = "$" + String(curr_state.funds_players[i])
+            }
+            if(i==2){
+                p3Funds.text = "$" + String(curr_state.funds_players[i])
+            }
             if (curr_state.players_round[i] == false){
                 if(i == 0){
                     p1card1.image = UIImage(named: "back_w")
                     p1card2.image = UIImage(named: "back_w")
                     player1Label.text = curr_state.players[i].name! + "(Folded)"
-                    player1Label.textColor = .white
                 }
                 if(i == 1){
                     p2card1.image = UIImage(named: "back_w")
                     p2card2.image = UIImage(named: "back_w")
                     player2Label.text = curr_state.players[i].name! + "(Folded)"
-                    player2Label.textColor = .white
                 }
                 if (i == 2){
                     p3card1.image = UIImage(named: "back_w")
                     p3card2.image = UIImage(named: "back_w")
                     player3Label.text = curr_state.players[i].name! + "(Folded)"
-                    player3Label.textColor = .white
                 }
             }
             else{

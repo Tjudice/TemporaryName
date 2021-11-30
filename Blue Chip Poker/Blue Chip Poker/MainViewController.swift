@@ -68,7 +68,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func host_game(_ sender: Any) {
-        MultiPeer.instance.stopAccepting()
         performSegue(withIdentifier: "host_segue", sender: self)
     }
     

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,7 @@
         <!--Main View Controller-->
         <scene sceneID="SYa-1j-Kac">
             <objects>
-                <viewController id="MwQ-Rq-iAK" customClass="MainViewController" customModule="Blue_Chip_Poker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="MwQ-Rq-iAK" customClass="MainViewController" customModule="Blue_Chip_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mc0-kh-s4l">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -320,13 +321,6 @@
                                 <rect key="frame" x="432" y="267" width="46" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q1-pa-yGt">
-                                <rect key="frame" x="731" y="155" width="131" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back.png" translatesAutoresizingMaskIntoConstraints="NO" id="xNb-7j-LoK">
                                 <rect key="frame" x="460" y="238" width="46" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -394,6 +388,34 @@
                                 <rect key="frame" x="375" y="351" width="184" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player 3 $" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrj-Dh-0hC">
+                                <rect key="frame" x="92" y="308" width="76" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player 2 $" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qu8-0O-UHm">
+                                <rect key="frame" x="746" y="307" width="76" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player 1 $" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYY-uH-FVP">
+                                <rect key="frame" x="350" y="299" width="74" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q1-pa-yGt">
+                                <rect key="frame" x="704" y="155" width="131" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -402,6 +424,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="gEr-fv-jVc">
+                        <barButtonItem key="backBarButtonItem" title="Home" id="pWl-47-Bqb">
+                            <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="medium"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="betButton" destination="bgW-h9-duO" id="t9B-fB-x8K"/>
@@ -413,10 +440,13 @@
                         <outlet property="flop5" destination="rqV-Tv-woW" id="eT6-2T-187"/>
                         <outlet property="foldButton" destination="Xdm-cH-PMg" id="gRU-CD-CYF"/>
                         <outlet property="gameStat" destination="aGu-8o-4Od" id="FsW-0k-GxB"/>
+                        <outlet property="p1Funds" destination="YYY-uH-FVP" id="l4L-LT-PKp"/>
                         <outlet property="p1card1" destination="w1C-pU-Pc0" id="HCR-d7-3KW"/>
                         <outlet property="p1card2" destination="xNb-7j-LoK" id="1xs-IG-yte"/>
+                        <outlet property="p2Funds" destination="Qu8-0O-UHm" id="ige-PC-jMn"/>
                         <outlet property="p2card1" destination="CKk-Yu-Xkb" id="NoF-zG-oQr"/>
                         <outlet property="p2card2" destination="2eG-Ab-eSW" id="5oP-Iq-LVt"/>
+                        <outlet property="p3Funds" destination="Rrj-Dh-0hC" id="Idy-vx-0Pk"/>
                         <outlet property="p3card1" destination="GJL-tk-NfL" id="gY1-gP-6Sh"/>
                         <outlet property="p3card2" destination="h1l-9Q-K1K" id="AfB-Co-KOg"/>
                         <outlet property="player1Label" destination="LW3-Oj-jec" id="k4D-eS-I4w"/>
@@ -436,6 +466,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back.png" width="157" height="238"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="gameBackground" width="626" height="365"/>
         <image name="menuBackground" width="753" height="378"/>
         <systemColor name="labelColor">

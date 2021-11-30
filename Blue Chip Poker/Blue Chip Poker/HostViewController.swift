@@ -24,7 +24,7 @@ class HostViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "joinGameCell")
         
         MultiPeer.instance.delegate = self
-        MultiPeer.instance.initialize(serviceType: "demo-app", deviceName: UIDevice.current.name)
+//        MultiPeer.instance.initialize(serviceType: "demo-app")
         MultiPeer.instance.autoConnect()
         tableView.reloadData()
         
