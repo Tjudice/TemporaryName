@@ -1,0 +1,16 @@
+PODS:
+  - MultiPeer (0.2.0)
+
+DEPENDENCIES:
+  - MultiPeer
+
+SPEC REPOS:
+  trunk:
+    - MultiPeer
+
+SPEC CHECKSUMS:
+  MultiPeer: f57282174c0a5cef25de4ba94dec066eb0f17437
+
+PODFILE CHECKSUM: 0af762649ecf42b8d74d3e219f4dcfd2061023b2
+
+COCOAPODS: 1.11.2

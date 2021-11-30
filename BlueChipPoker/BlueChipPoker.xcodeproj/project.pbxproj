@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A43DCB9274ECC4900982FD3 /* BalanceMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43DCB8274ECC4900982FD3 /* BalanceMenuView.swift */; };
+		9A43DCBD27506F0C00982FD3 /* SharedMenuViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43DCBC27506F0900982FD3 /* SharedMenuViews.swift */; };
+		9AB540C0272DCFDA00403B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AB540BF272DCFDA00403B1D /* Assets.xcassets */; };
+		9AB540D1272F72A800403B1D /* BlueChipPokerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540D0272F72A800403B1D /* BlueChipPokerApp.swift */; };
+		9AB540D3272F72EC00403B1D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540D2272F72EC00403B1D /* MenuView.swift */; };
+		9AB540DA272F925500403B1D /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540D9272F925500403B1D /* GameMenuView.swift */; };
+		9AB540DD272FAF3300403B1D /* P2PNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540DC272FAF3300403B1D /* P2PNetwork.swift */; };
+		9AB540DF272FB06800403B1D /* P2PSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB540DE272FB06800403B1D /* P2PSession.swift */; };
+		9AB540E4272FB70B00403B1D /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 9AB540E3272FB70B00403B1D /* P2PShare */; };
+		9AC90EA8275190D900CF816E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC90EA7275190D900CF816E /* UserInfo.swift */; };
+		9AD832D02756011A005BC254 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD832CF2756011A005BC254 /* ExternalAccessory.framework */; };
+		9AD832D22756145F005BC254 /* MultipeerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832D12756145E005BC254 /* MultipeerViewModel.swift */; };
+		9AD832D427562870005BC254 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832D327562870005BC254 /* GameView.swift */; };
+		9AD832D6275628C6005BC254 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832D5275628C6005BC254 /* GameViewModel.swift */; };
+		9AD832D827562A13005BC254 /* combinationToRank_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AD832D727562A12005BC254 /* combinationToRank_bytes.json */; };
+		9AD832E427562A28005BC254 /* SPHModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832D927562A27005BC254 /* SPHModelDeck.swift */; };
+		9AD832E527562A28005BC254 /* SPHModelTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832DA27562A27005BC254 /* SPHModelTable.swift */; };
+		9AD832E627562A28005BC254 /* uniqueToRanks_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AD832DB27562A27005BC254 /* uniqueToRanks_bytes.json */; };
+		9AD832E727562A28005BC254 /* SPHModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832DC27562A27005BC254 /* SPHModelPlayer.swift */; };
+		9AD832E827562A28005BC254 /* primeProductToCombination_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AD832DD27562A27005BC254 /* primeProductToCombination_bytes.json */; };
+		9AD832E927562A28005BC254 /* SPHModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832DE27562A28005BC254 /* SPHModelCard.swift */; };
+		9AD832EA27562A28005BC254 /* SPHByteRanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832DF27562A28005BC254 /* SPHByteRanks.swift */; };
+		9AD832EB27562A28005BC254 /* SPHExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832E027562A28005BC254 /* SPHExtensions.swift */; };
+		9AD832EC27562A28005BC254 /* SPHEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832E127562A28005BC254 /* SPHEvaluator.swift */; };
+		9AD832ED27562A28005BC254 /* flushes_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9AD832E227562A28005BC254 /* flushes_bytes.json */; };
+		9AD832EE27562A28005BC254 /* SPHModelDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD832E327562A28005BC254 /* SPHModelDealer.swift */; };
+		9C500AF42C7A27386E9C92AA /* Pods_BlueChipPoker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3CA94D7D70B3D6852D8AA7 /* Pods_BlueChipPoker.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0B3CA94D7D70B3D6852D8AA7 /* Pods_BlueChipPoker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlueChipPoker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBDDE40DF35680D08D1154B /* Pods-BlueChipPoker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueChipPoker.release.xcconfig"; path = "Target Support Files/Pods-BlueChipPoker/Pods-BlueChipPoker.release.xcconfig"; sourceTree = "<group>"; };
+		32BEE90F3D5EA348A7610EBA /* Pods-BlueChipPoker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlueChipPoker.debug.xcconfig"; path = "Target Support Files/Pods-BlueChipPoker/Pods-BlueChipPoker.debug.xcconfig"; sourceTree = "<group>"; };
+		9A43DCB8274ECC4900982FD3 /* BalanceMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceMenuView.swift; sourceTree = "<group>"; };
+		9A43DCBC27506F0900982FD3 /* SharedMenuViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedMenuViews.swift; sourceTree = "<group>"; };
+		9AB540AF272DCFD500403B1D /* BlueChipPoker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueChipPoker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AB540BF272DCFDA00403B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9AB540D0272F72A800403B1D /* BlueChipPokerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueChipPokerApp.swift; sourceTree = "<group>"; };
+		9AB540D2272F72EC00403B1D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		9AB540D6272F8E0100403B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9AB540D9272F925500403B1D /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
+		9AB540DC272FAF3300403B1D /* P2PNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PNetwork.swift; sourceTree = "<group>"; };
+		9AB540DE272FB06800403B1D /* P2PSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PSession.swift; sourceTree = "<group>"; };
+		9AC90EA7275190D900CF816E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		9AD832CE27560101005BC254 /* BlueChipPoker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlueChipPoker.entitlements; sourceTree = "<group>"; };
+		9AD832CF2756011A005BC254 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		9AD832D12756145E005BC254 /* MultipeerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerViewModel.swift; sourceTree = "<group>"; };
+		9AD832D327562870005BC254 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		9AD832D5275628C6005BC254 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		9AD832D727562A12005BC254 /* combinationToRank_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = combinationToRank_bytes.json; sourceTree = "<group>"; };
+		9AD832D927562A27005BC254 /* SPHModelDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelDeck.swift; sourceTree = "<group>"; };
+		9AD832DA27562A27005BC254 /* SPHModelTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelTable.swift; sourceTree = "<group>"; };
+		9AD832DB27562A27005BC254 /* uniqueToRanks_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uniqueToRanks_bytes.json; sourceTree = "<group>"; };
+		9AD832DC27562A27005BC254 /* SPHModelPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelPlayer.swift; sourceTree = "<group>"; };
+		9AD832DD27562A27005BC254 /* primeProductToCombination_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = primeProductToCombination_bytes.json; sourceTree = "<group>"; };
+		9AD832DE27562A28005BC254 /* SPHModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelCard.swift; sourceTree = "<group>"; };
+		9AD832DF27562A28005BC254 /* SPHByteRanks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHByteRanks.swift; sourceTree = "<group>"; };
+		9AD832E027562A28005BC254 /* SPHExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHExtensions.swift; sourceTree = "<group>"; };
+		9AD832E127562A28005BC254 /* SPHEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHEvaluator.swift; sourceTree = "<group>"; };
+		9AD832E227562A28005BC254 /* flushes_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = flushes_bytes.json; sourceTree = "<group>"; };
+		9AD832E327562A28005BC254 /* SPHModelDealer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelDealer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9AB540AC272DCFD500403B1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD832D02756011A005BC254 /* ExternalAccessory.framework in Frameworks */,
+				9AB540E4272FB70B00403B1D /* P2PShare in Frameworks */,
+				9C500AF42C7A27386E9C92AA /* Pods_BlueChipPoker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9AB540A6272DCFD500403B1D = {
+			isa = PBXGroup;
+			children = (
+				9AB540B1272DCFD500403B1D /* BlueChipPoker */,
+				9AB540B0272DCFD500403B1D /* Products */,
+				DC967EAB1A52C21649C8E341 /* Pods */,
+				AD5BB14BA7631F20364D341A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9AB540B0272DCFD500403B1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AB540AF272DCFD500403B1D /* BlueChipPoker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AB540B1272DCFD500403B1D /* BlueChipPoker */ = {
+			isa = PBXGroup;
+			children = (
+				9AD832CE27560101005BC254 /* BlueChipPoker.entitlements */,
+				9AB540D6272F8E0100403B1D /* Info.plist */,
+				9AB540DB272FADCB00403B1D /* P2P */,
+				9AB540CE272F54BF00403B1D /* Shared */,
+				9AB540CD272F54A100403B1D /* Menus */,
+				9AB540CF272F54E200403B1D /* Gameplay */,
+				9AB540BF272DCFDA00403B1D /* Assets.xcassets */,
+			);
+			path = BlueChipPoker;
+			sourceTree = "<group>";
+		};
+		9AB540CD272F54A100403B1D /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				9AB540D2272F72EC00403B1D /* MenuView.swift */,
+				9A43DCB8274ECC4900982FD3 /* BalanceMenuView.swift */,
+				9AB540D9272F925500403B1D /* GameMenuView.swift */,
+				9A43DCBC27506F0900982FD3 /* SharedMenuViews.swift */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
+		9AB540CE272F54BF00403B1D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9AB540D0272F72A800403B1D /* BlueChipPokerApp.swift */,
+				9AC90EA7275190D900CF816E /* UserInfo.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		9AB540CF272F54E200403B1D /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+				9AD832E227562A28005BC254 /* flushes_bytes.json */,
+				9AD832DD27562A27005BC254 /* primeProductToCombination_bytes.json */,
+				9AD832DF27562A28005BC254 /* SPHByteRanks.swift */,
+				9AD832E127562A28005BC254 /* SPHEvaluator.swift */,
+				9AD832E027562A28005BC254 /* SPHExtensions.swift */,
+				9AD832DE27562A28005BC254 /* SPHModelCard.swift */,
+				9AD832E327562A28005BC254 /* SPHModelDealer.swift */,
+				9AD832D927562A27005BC254 /* SPHModelDeck.swift */,
+				9AD832DC27562A27005BC254 /* SPHModelPlayer.swift */,
+				9AD832DA27562A27005BC254 /* SPHModelTable.swift */,
+				9AD832DB27562A27005BC254 /* uniqueToRanks_bytes.json */,
+				9AD832D727562A12005BC254 /* combinationToRank_bytes.json */,
+				9AD832D327562870005BC254 /* GameView.swift */,
+				9AD832D5275628C6005BC254 /* GameViewModel.swift */,
+			);
+			path = Gameplay;
+			sourceTree = "<group>";
+		};
+		9AB540DB272FADCB00403B1D /* P2P */ = {
+			isa = PBXGroup;
+			children = (
+				9AB540DC272FAF3300403B1D /* P2PNetwork.swift */,
+				9AB540DE272FB06800403B1D /* P2PSession.swift */,
+				9AD832D12756145E005BC254 /* MultipeerViewModel.swift */,
+			);
+			path = P2P;
+			sourceTree = "<group>";
+		};
+		AD5BB14BA7631F20364D341A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AD832CF2756011A005BC254 /* ExternalAccessory.framework */,
+				0B3CA94D7D70B3D6852D8AA7 /* Pods_BlueChipPoker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC967EAB1A52C21649C8E341 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32BEE90F3D5EA348A7610EBA /* Pods-BlueChipPoker.debug.xcconfig */,
+				2DBDDE40DF35680D08D1154B /* Pods-BlueChipPoker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9AB540AE272DCFD500403B1D /* BlueChipPoker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AB540C6272DCFDA00403B1D /* Build configuration list for PBXNativeTarget "BlueChipPoker" */;
+			buildPhases = (
+				1695F941D84BACC85E4751CC /* [CP] Check Pods Manifest.lock */,
+				9AB540AB272DCFD500403B1D /* Sources */,
+				9AB540AC272DCFD500403B1D /* Frameworks */,
+				9AB540AD272DCFD500403B1D /* Resources */,
+				3C9FF179CC8D22BA276ACE3E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlueChipPoker;
+			packageProductDependencies = (
+				9AB540E3272FB70B00403B1D /* P2PShare */,
+			);
+			productName = BlueChipPoker;
+			productReference = 9AB540AF272DCFD500403B1D /* BlueChipPoker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9AB540A7272DCFD500403B1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					9AB540AE272DCFD500403B1D = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 9AB540AA272DCFD500403B1D /* Build configuration list for PBXProject "BlueChipPoker" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9AB540A6272DCFD500403B1D;
+			packageReferences = (
+				9AB540E2272FB70B00403B1D /* XCRemoteSwiftPackageReference "P2PShareKit" */,
+			);
+			productRefGroup = 9AB540B0272DCFD500403B1D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AB540AE272DCFD500403B1D /* BlueChipPoker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AB540AD272DCFD500403B1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD832E627562A28005BC254 /* uniqueToRanks_bytes.json in Resources */,
+				9AD832D827562A13005BC254 /* combinationToRank_bytes.json in Resources */,
+				9AD832E827562A28005BC254 /* primeProductToCombination_bytes.json in Resources */,
+				9AB540C0272DCFDA00403B1D /* Assets.xcassets in Resources */,
+				9AD832ED27562A28005BC254 /* flushes_bytes.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1695F941D84BACC85E4751CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlueChipPoker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C9FF179CC8D22BA276ACE3E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlueChipPoker/Pods-BlueChipPoker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlueChipPoker/Pods-BlueChipPoker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlueChipPoker/Pods-BlueChipPoker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9AB540AB272DCFD500403B1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD832E927562A28005BC254 /* SPHModelCard.swift in Sources */,
+				9AB540D3272F72EC00403B1D /* MenuView.swift in Sources */,
+				9AD832E527562A28005BC254 /* SPHModelTable.swift in Sources */,
+				9AD832EC27562A28005BC254 /* SPHEvaluator.swift in Sources */,
+				9AD832D22756145F005BC254 /* MultipeerViewModel.swift in Sources */,
+				9AB540DD272FAF3300403B1D /* P2PNetwork.swift in Sources */,
+				9AD832D6275628C6005BC254 /* GameViewModel.swift in Sources */,
+				9AB540D1272F72A800403B1D /* BlueChipPokerApp.swift in Sources */,
+				9AD832D427562870005BC254 /* GameView.swift in Sources */,
+				9AB540DA272F925500403B1D /* GameMenuView.swift in Sources */,
+				9A43DCB9274ECC4900982FD3 /* BalanceMenuView.swift in Sources */,
+				9AD832E427562A28005BC254 /* SPHModelDeck.swift in Sources */,
+				9AD832EA27562A28005BC254 /* SPHByteRanks.swift in Sources */,
+				9A43DCBD27506F0C00982FD3 /* SharedMenuViews.swift in Sources */,
+				9AD832EB27562A28005BC254 /* SPHExtensions.swift in Sources */,
+				9AC90EA8275190D900CF816E /* UserInfo.swift in Sources */,
+				9AD832E727562A28005BC254 /* SPHModelPlayer.swift in Sources */,
+				9AB540DF272FB06800403B1D /* P2PSession.swift in Sources */,
+				9AD832EE27562A28005BC254 /* SPHModelDealer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9AB540C4272DCFDA00403B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9AB540C5272DCFDA00403B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9AB540C7272DCFDA00403B1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32BEE90F3D5EA348A7610EBA /* Pods-BlueChipPoker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BlueChipPoker/BlueChipPoker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96AK8ABBLG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlueChipPoker/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.amubarez.BlueChipPoker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9AB540C8272DCFDA00403B1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DBDDE40DF35680D08D1154B /* Pods-BlueChipPoker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BlueChipPoker/BlueChipPoker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 96AK8ABBLG;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlueChipPoker/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.amubarez.BlueChipPoker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9AB540AA272DCFD500403B1D /* Build configuration list for PBXProject "BlueChipPoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AB540C4272DCFDA00403B1D /* Debug */,
+				9AB540C5272DCFDA00403B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AB540C6272DCFDA00403B1D /* Build configuration list for PBXNativeTarget "BlueChipPoker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AB540C7272DCFDA00403B1D /* Debug */,
+				9AB540C8272DCFDA00403B1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9AB540E2272FB70B00403B1D /* XCRemoteSwiftPackageReference "P2PShareKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dobster/P2PShareKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9AB540E3272FB70B00403B1D /* P2PShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9AB540E2272FB70B00403B1D /* XCRemoteSwiftPackageReference "P2PShareKit" */;
+			productName = P2PShare;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9AB540A7272DCFD500403B1D /* Project object */;
+}
