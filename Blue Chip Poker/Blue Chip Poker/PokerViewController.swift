@@ -125,6 +125,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     var triggered : Int  = 0
     var clicked : Int = 0
     var initial_connected : Int = 0
+    var big_blind_bet: Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,6 +164,14 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             curr_state.players_round = players_in_round
         
             curr_state.dealer.currentDeck.shuffle()
+            curr_state.funds_players[curr_state.big_blind_ind] -= big_blind_bet
+            curr_state.funds_players[curr_state.small_blind_ind] -= big_blind_bet/2
+            curr_state.prev_bet = 1
+            curr_state.players_round_bet[curr_state.big_blind_ind] = big_blind_bet
+            curr_state.players_round_bet[curr_state.small_blind_ind] = big_blind_bet/2
+            curr_state.stats[curr_state.players[curr_state.big_blind_ind].name!]![1] -= big_blind_bet
+            curr_state.stats[curr_state.players[curr_state.small_blind_ind].name!]![1] -= big_blind_bet/2
+            curr_state.money_in_pot += big_blind_bet + big_blind_bet/2
 
             for i in 0...(curr_state.players.count-1){
                 curr_state.players[i].cards = curr_state.dealer.dealHand()
@@ -209,7 +218,12 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                 alljoined += 1
                 if(alljoined >= initial_connected){
                     if(clicked == 1){
-                        resetRound()
+                        if triggered == 1{
+                            resetRound()
+                        }
+                        else{
+                            triggered = 1
+                        }
                         MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
                         show_curr_player_cards()
                         clicked = 0
@@ -228,6 +242,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             }
             if(state == "Delete"){
                initial_connected -= 1
+                triggered = 0
             }
             if(state == "End"){
                 summary()
@@ -279,7 +294,6 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         curr_state.river_done = false
         curr_state.players_round = [Bool]()
         curr_state.money_in_pot = 0
-        curr_state.prev_bet = 0
         curr_state.win_index = -1
         curr_state.big_blind_ind = (curr_state.big_blind_ind+1)%curr_state.players.count
         curr_state.small_blind_ind = (curr_state.small_blind_ind+1)%curr_state.players.count
@@ -306,6 +320,14 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                 p3card2.image = UIImage(named: "back_w")
             }
         }
+        curr_state.prev_bet = 1
+        curr_state.players_round_bet[curr_state.big_blind_ind] = big_blind_bet
+        curr_state.players_round_bet[curr_state.small_blind_ind] = big_blind_bet/2
+        curr_state.funds_players[curr_state.big_blind_ind] -= big_blind_bet
+        curr_state.funds_players[curr_state.small_blind_ind] -= big_blind_bet/2
+        curr_state.stats[curr_state.players[curr_state.big_blind_ind].name!]![1] -= big_blind_bet
+        curr_state.stats[curr_state.players[curr_state.small_blind_ind].name!]![1] -= big_blind_bet/2
+        curr_state.money_in_pot += big_blind_bet + big_blind_bet/2
     }
     
     func resetBets(){
@@ -457,6 +479,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             }
             self.clicked = 1
             self.curr_state.players.remove(at: ind)
+            self.curr_state.funds_players.remove(at: ind)
             if self.curr_state.players.count <= 1{
                 MultiPeer.instance.send(object: "End", type: DataType.String.rawValue)
                 self.summary()
@@ -473,7 +496,12 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             MultiPeer.instance.send(object: "Continue", type: DataType.String.rawValue)
             self.hideAllCards()
             if(self.alljoined >= self.initial_connected){
-                self.resetRound()
+                if self.triggered == 1{
+                    self.resetRound()
+                }
+                else{
+                    self.triggered = 1
+                }
                 MultiPeer.instance.send(object: self.curr_state, type: DataType.GameState.rawValue)
                 self.show_curr_player_cards()
                 self.clicked = 0
@@ -728,11 +756,11 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
 
     func showTableCards(){
         
-        let small_blind_name = curr_state.players[curr_state.small_blind_ind].name
-        let big_blind_name = curr_state.players[curr_state.big_blind_ind].name
+        let small_blind = curr_state.players[curr_state.small_blind_ind].name! + " ($" + String(big_blind_bet/2) + ")"
+        let big_blind = curr_state.players[curr_state.big_blind_ind].name! + " ($" + String(big_blind_bet) + ")"
         let dealer_name = curr_state.players[curr_state.dealer_ind].name
-        gameStat.text = "Big Blind: " + big_blind_name! +
-        "\nSmall Blind: " + small_blind_name! + "\nDealer: " + dealer_name!
+        gameStat.text = "Big Blind: " + big_blind +
+        "\nSmall Blind: " + small_blind + "\nDealer: " + dealer_name!
         
         if(curr_state.flop_done == false){
             flop1.image = UIImage(named: "back_w")

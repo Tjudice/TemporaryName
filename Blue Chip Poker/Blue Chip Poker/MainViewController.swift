@@ -67,6 +67,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("NOWWWW")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PokerViewController") as! PokerViewController
+        self.present(nextViewController, animated:true, completion:nil)
+    }
+    
     @IBAction func host_game(_ sender: Any) {
         performSegue(withIdentifier: "host_segue", sender: self)
     }

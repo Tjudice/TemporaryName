@@ -29,6 +29,8 @@
 		3827DFC82750B4DE00A5121A /* PokerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827DFC72750B4DE00A5121A /* PokerViewController.swift */; };
 		383F0656272F9942008F4D3B /* P2PShare in Frameworks */ = {isa = PBXBuildFile; productRef = 383F0655272F9942008F4D3B /* P2PShare */; };
 		383F065827301552008F4D3B /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383F065727301552008F4D3B /* HostViewController.swift */; };
+		384024DA27568777005AE7AE /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384024D927568777005AE7AE /* UserSettingsController.swift */; };
+		384024DC275695A8005AE7AE /* GameSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384024DB275695A8005AE7AE /* GameSettingsController.swift */; };
 		38C47AAC273032000046341A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C47AAB273032000046341A /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		3827DFC52750B1C500A5121A /* cards_png */ = {isa = PBXFileReference; lastKnownFileType = folder; path = cards_png; sourceTree = "<group>"; };
 		3827DFC72750B4DE00A5121A /* PokerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerViewController.swift; sourceTree = "<group>"; };
 		383F065727301552008F4D3B /* HostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
+		384024D927568777005AE7AE /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
+		384024DB275695A8005AE7AE /* GameSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsController.swift; sourceTree = "<group>"; };
 		38C47AAB273032000046341A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3C65FAE0B10123CD0BB9E999 /* Pods-Blue Chip Poker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blue Chip Poker.debug.xcconfig"; path = "Target Support Files/Pods-Blue Chip Poker/Pods-Blue Chip Poker.debug.xcconfig"; sourceTree = "<group>"; };
 		4983A700F953A0CA8D7B61E6 /* Pods_Blue_Chip_Poker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blue_Chip_Poker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +104,8 @@
 				38C47AAB273032000046341A /* MainViewController.swift */,
 				383F065727301552008F4D3B /* HostViewController.swift */,
 				3827DFC72750B4DE00A5121A /* PokerViewController.swift */,
+				384024D927568777005AE7AE /* UserSettingsController.swift */,
+				384024DB275695A8005AE7AE /* GameSettingsController.swift */,
 				32279FED272A310500FBBE77 /* Main.storyboard */,
 				3827DFAE2750B05300A5121A /* combinationToRank_bytes.json */,
 				3827DFB02750B05300A5121A /* flushes_bytes.json */,
@@ -266,11 +272,13 @@
 			files = (
 				3827DFC02750B05400A5121A /* SPHByteRanks.swift in Sources */,
 				3827DFBF2750B05400A5121A /* SPHModelDealer.swift in Sources */,
+				384024DA27568777005AE7AE /* UserSettingsController.swift in Sources */,
 				3827DFBD2750B05400A5121A /* SPHExtensions.swift in Sources */,
 				3827DFC42750B05400A5121A /* SPHModelCard.swift in Sources */,
 				38C47AAC273032000046341A /* MainViewController.swift in Sources */,
 				3827DFC22750B05400A5121A /* SPHEvaluator.swift in Sources */,
 				383F065827301552008F4D3B /* HostViewController.swift in Sources */,
+				384024DC275695A8005AE7AE /* GameSettingsController.swift in Sources */,
 				3827DFBB2750B05400A5121A /* SPHModelDeck.swift in Sources */,
 				3827DFC82750B4DE00A5121A /* PokerViewController.swift in Sources */,
 				3827DFC12750B05400A5121A /* SPHModelTable.swift in Sources */,
