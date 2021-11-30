@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import MultiPeer
 
 @main
 struct BlueChipPokerApp: App {
-    @StateObject var p2pSesh : P2PSession = P2PSession()
+   // @StateObject var p2pSesh : P2PSession = P2PSession()
+    @StateObject var userInfo : UserInfo = UserInfo()
+    @StateObject var mpSesh : MultiPeerViewModel = MultiPeerViewModel()
     var body: some Scene {
         WindowGroup {
             MenuView()
-                .environmentObject(p2pSesh)
+                .environmentObject(mpSesh)
+                .environmentObject(userInfo)
         }
     }
 }

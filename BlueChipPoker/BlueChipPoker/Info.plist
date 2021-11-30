@@ -4,6 +4,7 @@
 <dict>
 	<key>NSBonjourServices</key>
 	<array>
+		<string>_demo-app._tcp</string>
 		<string>_demo._tcp</string>
 	</array>
 	<key>UTExportedTypeDeclarations</key>

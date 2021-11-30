@@ -9,31 +9,44 @@ import SwiftUI
 
 struct BalanceMenuView : View{
     @Binding var isPresented: Bool
-    @State private var balance = "0"
-    var body: some View{
-        ZStack{
-            Image("menuBackground")
-                .resizable()
-                .scaledToFit()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            VStack{
-                TextField("Enter your name", text: $balance)
-                    .keyboardType(.numberPad)
-                    .frame(width: 300, height: 200)
-                    .padding(10)
-                    .background()
-                    .cornerRadius(20)
-                    .shadow(color: .gray, radius: 10)
-            }
-        } // ZStack
-    } // body
-}
+    @State private var balance = ""
+    @EnvironmentObject var userInfo : UserInfo
 
-// Preview function used for development
+    var body: some View{
+        VStack{
+            Text("Enter your new balance:")
+            TextField("", text: $balance)
+                .keyboardType(.numberPad)
+                .padding(10)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(color: .gray, radius: 10)
+                .frame(width: 200)
+                .padding()
+            HStack{
+                Button("Submit"){
+                    userInfo.balance += Int(balance) ?? 0
+                    //print(userBalance)
+                    isPresented.toggle()
+                }
+                .padding()
+                Button("Cancel"){
+                    balance = "0"
+                    isPresented.toggle()
+                }
+                .padding()
+            }
+        } .frame(width: 300, height: 200)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+} // body
+
+/* Preview function used for development
 struct BalanceMenuView_Previews: PreviewProvider {
+    @ObservedObject var userBalance = UserInfo()
     static var previews: some View {
-        BalanceMenuView(isPresented: .constant(true))
+        BalanceMenuView(isPresented: .constant(true), userBalance: userBalance)
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
+*/

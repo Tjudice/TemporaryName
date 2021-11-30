@@ -1,0 +1,6 @@
+framework module Pods_BlueChipPoker {
+  umbrella header "Pods-BlueChipPoker-umbrella.h"
+
+  export *
+  module * { export * }
+}
