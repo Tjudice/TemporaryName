@@ -126,28 +126,35 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     var clicked : Int = 0
     var initial_connected : Int = 0
     var big_blind_bet: Int = 2
+    var players_filtered: [String] = []
+    var funds_filtered: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MultiPeer.instance.delegate = self
         print("Poker %d", MultiPeer.instance.connectedDeviceNames)
-        initial_connected = MultiPeer.instance.connectedDeviceNames.count
+//        initial_connected = MultiPeer.instance.connectedDeviceNames.count
         
         
         if (segueVar == 1){
             
-            let devices = MultiPeer.instance.connectedDeviceNames
+            let devices = players_filtered
+            initial_connected = players_filtered.count
             
-            var curr_players = [Player(name: UIDevice.current.name)]
+            var curr_players = [Player(name: UserDefaults.standard.string(forKey: "username")!)]
             var curr_funds = [100]
+            let balance = UserDefaults.standard.string(forKey: "balance")
+            if balance != nil{
+                curr_funds[0] = Int(balance ?? "100")!
+            }
             var players_in_round = [true]
-            curr_state.stats[UIDevice.current.name] = [0,0]
+            curr_state.stats[UserDefaults.standard.string(forKey: "username")!] = [0,0]
             
             for i in 0...(devices.count-1){
                 curr_state.stats[devices[i]] = [0,0]
                 curr_players.append(Player(name: devices[i]))
-                curr_funds.append(100)
+                curr_funds.append(funds_filtered[i])
                 players_in_round.append(true)
                 curr_state.players_round_bet.append(-1)
             }
@@ -198,6 +205,9 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
           case DataType.GameState.rawValue:
             let state:GameState = data.convert() as! GameState
                 curr_state = state
+                if initial_connected == 0{
+                    initial_connected = curr_state.players.count - 1
+                }
                 if triggered == 1{
                     show_curr_player_cards()
                 }
@@ -207,11 +217,16 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             let state = data.convert() as! String
             if (state == "HI"){
                 alljoined += 1
+                if initial_connected == 0{
+                    initial_connected = curr_state.players.count - 1
+                }else{
                 if(alljoined >= initial_connected){
                     MultiPeer.instance.send(object: "Trigger", type: DataType.String.rawValue)
+                    MultiPeer.instance.send(object: "GameStarted", type: DataType.String.rawValue)
                     MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
                     show_curr_player_cards()
                     triggered = 1
+                }
                 }
             }
             if(state == "Continue"){
@@ -246,6 +261,9 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             }
             if(state == "End"){
                 summary()
+            }
+            if(state == "Initialcheck"){
+                
             }
             break
                     
@@ -385,11 +403,23 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                     curr_state.dealer.dealTurn()
                     curr_state.turn_done = true
                     nextPlayer(index: curr_state.curr_player_ind)
+                    if (curr_state.players_round[curr_state.small_blind_ind] == false) {
+                        nextPlayer(index: curr_state.small_blind_ind)
+                    }
+                    else {
+                        curr_state.curr_player_ind = curr_state.small_blind_ind
+                    }
                 }
                 else if (curr_state.river_done == false){
                     curr_state.dealer.dealRiver()
                     curr_state.river_done = true
                     nextPlayer(index: curr_state.curr_player_ind)
+                    if (curr_state.players_round[curr_state.small_blind_ind] == false) {
+                        nextPlayer(index: curr_state.small_blind_ind)
+                    }
+                    else {
+                        curr_state.curr_player_ind = curr_state.small_blind_ind
+                    }
                 }
                 else{
                     // check for folded players before
@@ -429,8 +459,8 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     }
     
     func summary(){
-        let rounds_won = String(curr_state.stats[UIDevice.current.name]![0])
-        let funds_won = String(curr_state.stats[UIDevice.current.name]![1])
+        let rounds_won = String(curr_state.stats[UserDefaults.standard.string(forKey: "username")!]![0])
+        let funds_won = String(curr_state.stats[UserDefaults.standard.string(forKey: "username")!]![1])
         let total = String(curr_state.total_rounds)
         let alert = UIAlertController(title: "Summary" , message: "Rounds won: " + rounds_won + "/" + total + "\nMoney gained/lost: " + funds_won, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler:  { alt -> Void in
@@ -441,6 +471,13 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         alert.addAction(okAction)
 
         self.present(alert, animated: true, completion: nil)
+//        for i in 0...MultiPeer.instance.connectedPeers.count-1{
+//            if MultiPeer.instance.connectedDeviceNames[i] == "Akash"{
+//                MultiPeer.instance.connectedPeers.remove(at: i)
+//            }
+//            print(MultiPeer.instance.connectedDeviceNames)
+//        }
+
     }
     
     func announceWinner(){
@@ -472,7 +509,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler:  { alt -> Void in
             var ind = 0
             for i in 0...self.curr_state.players.count-1{
-                if self.curr_state.players[i].name == UIDevice.current.name{
+                if self.curr_state.players[i].name == UserDefaults.standard.string(forKey: "username")!{
                     ind = i
                     break
                 }
@@ -556,7 +593,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         var index = 0
         
         for i in 0...(curr_state.players.count-1){
-            if(curr_state.players[i].name == UIDevice.current.name){
+            if(curr_state.players[i].name == UserDefaults.standard.string(forKey: "username")!){
                 index = i
             }
             if(curr_state.curr_player_ind == 0){
@@ -822,6 +859,11 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         }
     }
 
+    @IBAction func Homescreen(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        self.present(nextViewController, animated:true, completion:nil)
+    }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
     }
