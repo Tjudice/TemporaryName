@@ -30,6 +30,7 @@ class GameState: NSObject, NSCoding{
     var players_round_bet : [Int] = []
     var stats : [String : [Int]] = [:]
     var total_rounds = 0
+    var counter : Int = 25
     
     override init(){}
     
@@ -54,6 +55,7 @@ class GameState: NSObject, NSCoding{
         players_round_bet = coder.decodeObject(forKey: "players_round_bet") as! [Int]
         stats = coder.decodeObject(forKey: "stats") as! [String : [Int]]
         total_rounds = coder.decodeInteger(forKey: "total_rounds")
+        counter = coder.decodeInteger(forKey: "counter")
     }
     
     func encode(with coder: NSCoder) {
@@ -76,6 +78,7 @@ class GameState: NSObject, NSCoding{
         coder.encode(win_index, forKey: "win_index")
         coder.encode(stats, forKey: "stats")
         coder.encode(total_rounds, forKey: "total_rounds")
+        coder.encode(counter, forKey: "counter")
     }
 }
 
@@ -189,6 +192,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
           case DataType.GameState.rawValue:
             let state:GameState = data.convert() as! GameState
                 curr_state = state
+                Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
                 if triggered == 1{
                     show_curr_player_cards()
                 }
@@ -406,6 +410,20 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         }
     }
     
+    @objc func updateCounter() {
+        if curr_state.counter > 0 {
+            print(curr_state.counter)
+            curr_state.counter -= 1
+            // timerLabel.text = String(curr_state.counter)
+        }
+        else {
+            curr_state.players_round[curr_state.curr_player_ind] = false
+            handleBoard()
+        }
+    }
+    
+    //@IBOutlet var timerLabel: UILabel!
+    
     func summary(){
         let rounds_won = String(curr_state.stats[UIDevice.current.name]![0])
         let funds_won = String(curr_state.stats[UIDevice.current.name]![1])
@@ -480,7 +498,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                 MultiPeer.instance.send(object: "Reset", type: DataType.String.rawValue)
             }
             print(MultiPeer.instance.connectedDeviceNames.count)
-            
+            self.curr_state.counter = 25
         })
 
         alert.addAction(cancelAction)
@@ -668,7 +686,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                curr_state.players_round[(index + i)%curr_state.players.count] == false){
             i += 1
         }
-        
+        curr_state.counter = 25
         curr_state.curr_player_ind =  (index + i) % curr_state.players.count
         //handleBoard()
     }
