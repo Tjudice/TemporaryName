@@ -26,7 +26,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         MultiPeer.instance.delegate = self
         MultiPeer.instance.initialize(serviceType: "demo-app")
         MultiPeer.instance.startAccepting()
-        MultiPeer.instance.send(object: "requestHost", type: DataType.String.rawValue)
+//        MultiPeer.instance.send(object: "requestHost", type: DataType.String.rawValue)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +60,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "joinGameCell") ?? UITableViewCell(style: .default, reuseIdentifier: "joinGameCell")
         // Display the results that we've found, if any. Otherwise, show "searching..."
         if results.isEmpty {
-            cell.textLabel?.text = "Searching for games..."
+            cell.textLabel?.text = "Nearby Invites:"
             cell.textLabel?.textAlignment = .left
             cell.textLabel?.textColor = .white
             cell.backgroundColor = .clear
@@ -175,14 +175,14 @@ extension MainViewController: MultiPeerDelegate {
                 }
                 MultiPeer.instance.send(object: "Userdata " + username + " " + String(balance), type: DataType.String.rawValue)
             }
-            if (components[0] == "Host"){
+            if (components[0] == "Host" && components[2] == UserDefaults.standard.string(forKey: "username")!){
                 results = [components[1]]
                 tableView.reloadData()
             }
-            if state == "GameStarted"{
-                results = []
-                tableView.reloadData()
-            }
+//            if state == "GameStarted"{
+//                results = []
+//                tableView.reloadData()
+//            }
             break
         default:
             break
@@ -191,6 +191,6 @@ extension MainViewController: MultiPeerDelegate {
 
     func multiPeer(connectedDevicesChanged devices: [String]) {
         print("Connected devices changed: \(devices)")
-        MultiPeer.instance.send(object: "requestHost", type: DataType.String.rawValue)
+//        MultiPeer.instance.send(object: "requestHost", type: DataType.String.rawValue)
     }
 }

@@ -32,7 +32,7 @@ public class MultiPeer: NSObject {
     var serviceBrowser: MCNearbyServiceBrowser!
 
     /// Amount of time to spend connecting before timeout
-    public var connectionTimeout = 10.0
+    public var connectionTimeout = 5.0
 
     /// Peers available to connect to
     public var availablePeers: [Peer] = []

@@ -108,6 +108,7 @@ class HostViewController: UIViewController, UITableViewDelegate, UITableViewData
         var selected_funds:[Int] = []
         for i in 0...selected_players.count-1{
             selected_funds.append(funds[results.firstIndex(of: selected_players[i])!])
+            MultiPeer.instance.send(object: "Host " + UserDefaults.standard.string(forKey: "username")! + " " + selected_players[i], type: DataType.String.rawValue)
         }
 
         VC.players_filtered = selected_players
@@ -184,9 +185,9 @@ extension HostViewController: MultiPeerDelegate {
             break
         case DataType.String.rawValue:
             let state = data.convert() as! String
-            if state == "requestHost"{
-                MultiPeer.instance.send(object: "Host " + UserDefaults.standard.string(forKey: "username")!, type: DataType.String.rawValue)
-            }
+//            if state == "requestHost"{
+//                MultiPeer.instance.send(object: "Host " + UserDefaults.standard.string(forKey: "username")!, type: DataType.String.rawValue)
+//            }
             
             let components = state.components(separatedBy: " ")
             if components[0] == "Userdata"{
@@ -198,7 +199,7 @@ extension HostViewController: MultiPeerDelegate {
                         funds.append(Int(balance)!)
                     }
                 }
-                MultiPeer.instance.send(object: "Host " + UserDefaults.standard.string(forKey: "username")!, type: DataType.String.rawValue)
+//                MultiPeer.instance.send(object: "Host " + UserDefaults.standard.string(forKey: "username")!, type: DataType.String.rawValue)
                 tableView.reloadData()
             }
             break

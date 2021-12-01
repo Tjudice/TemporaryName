@@ -128,6 +128,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     var big_blind_bet: Int = 2
     var players_filtered: [String] = []
     var funds_filtered: [Int] = []
+    var initial_check: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,8 +186,8 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             }
             
             //triggered = 1
-            MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
-            MultiPeer.instance.send(object: "HI", type: DataType.String.rawValue)
+//            MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
+//            MultiPeer.instance.send(object: "HI", type: DataType.String.rawValue)
             hideAllButtons()
         
         }
@@ -205,9 +206,13 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
           case DataType.GameState.rawValue:
             let state:GameState = data.convert() as! GameState
                 curr_state = state
-                if initial_connected == 0{
+                if initial_check == false{
                     initial_connected = curr_state.players.count - 1
+                    initial_check = true
                 }
+            if initial_check == true && initial_connected == 0{
+                summary()
+            }
                 if triggered == 1{
                     show_curr_player_cards()
                 }
@@ -217,16 +222,16 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             let state = data.convert() as! String
             if (state == "HI"){
                 alljoined += 1
-                if initial_connected == 0{
-                    initial_connected = curr_state.players.count - 1
-                }else{
-                if(alljoined >= initial_connected){
+//                if initial_connected == 0{
+//                    initial_connected = curr_state.players.count - 1
+//                }else{
+                if(initial_connected != 0 && alljoined >= initial_connected){
                     MultiPeer.instance.send(object: "Trigger", type: DataType.String.rawValue)
-                    MultiPeer.instance.send(object: "GameStarted", type: DataType.String.rawValue)
+//                    MultiPeer.instance.send(object: "GameStarted", type: DataType.String.rawValue)
                     MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
                     show_curr_player_cards()
                     triggered = 1
-                }
+//                }
                 }
             }
             if(state == "Continue"){
@@ -257,13 +262,10 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             }
             if(state == "Delete"){
                initial_connected -= 1
-                triggered = 0
+//                triggered = 0
             }
             if(state == "End"){
                 summary()
-            }
-            if(state == "Initialcheck"){
-                
             }
             break
                     
@@ -511,6 +513,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             for i in 0...self.curr_state.players.count-1{
                 if self.curr_state.players[i].name == UserDefaults.standard.string(forKey: "username")!{
                     ind = i
+                    UserDefaults.standard.set(self.curr_state.funds_players[i], forKey: "balance")
                     break
                 }
             }
@@ -531,6 +534,12 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         let continueAction = UIAlertAction(title:  "Yes!" , style: .default, handler: { alt -> Void in
             self.clicked = 1
             MultiPeer.instance.send(object: "Continue", type: DataType.String.rawValue)
+            for i in 0...self.curr_state.players.count-1{
+                if self.curr_state.players[i].name == UserDefaults.standard.string(forKey: "username")!{ 
+                    UserDefaults.standard.set(self.curr_state.funds_players[i], forKey: "balance")
+                    break
+                }
+            }
             self.hideAllCards()
             if(self.alljoined >= self.initial_connected){
                 if self.triggered == 1{
