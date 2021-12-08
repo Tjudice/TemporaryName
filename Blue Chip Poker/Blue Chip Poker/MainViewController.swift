@@ -77,9 +77,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PokerViewController") as! PokerViewController
-        self.present(nextViewController, animated:true, completion:nil)
+        if !results.isEmpty{
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PokerViewController") as! PokerViewController
+            self.present(nextViewController, animated:true, completion:nil)
+        }
     }
     
     @IBAction func host_game(_ sender: Any) {

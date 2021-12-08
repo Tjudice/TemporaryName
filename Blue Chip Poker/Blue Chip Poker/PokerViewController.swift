@@ -30,6 +30,7 @@ class GameState: NSObject, NSCoding{
     var players_round_bet : [Int] = []
     var stats : [String : [Int]] = [:]
     var total_rounds = 0
+    var time_counter = 45
     
     override init(){}
     
@@ -54,6 +55,7 @@ class GameState: NSObject, NSCoding{
         players_round_bet = coder.decodeObject(forKey: "players_round_bet") as! [Int]
         stats = coder.decodeObject(forKey: "stats") as! [String : [Int]]
         total_rounds = coder.decodeInteger(forKey: "total_rounds")
+        time_counter  = coder.decodeInteger(forKey: "time_counter")
     }
     
     func encode(with coder: NSCoder) {
@@ -76,6 +78,7 @@ class GameState: NSObject, NSCoding{
         coder.encode(win_index, forKey: "win_index")
         coder.encode(stats, forKey: "stats")
         coder.encode(total_rounds, forKey: "total_rounds")
+        coder.encode(time_counter, forKey: "time_counter")
     }
 }
 
@@ -119,6 +122,8 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
 
     @IBOutlet weak var gameStat: UILabel!
     
+    @IBOutlet weak var timer: UILabel!
+    
     var curr_state = GameState()
     var segueVar : Int = 0
     var alljoined : Int = 0
@@ -129,6 +134,9 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
     var players_filtered: [String] = []
     var funds_filtered: [Int] = []
     var initial_check: Bool = false
+    var curr_timer : Timer?
+    var min_time : Int = 25
+    var check_time: Int = 25
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,10 +174,11 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             curr_state.big_blind_ind = 0%curr_players.count
             curr_state.small_blind_ind = 1%curr_players.count
             curr_state.dealer_ind = 2%curr_players.count
-            curr_state.curr_player_ind = 3%curr_players.count
+            curr_state.curr_player_ind = 2%curr_players.count
             curr_state.players = curr_players
             curr_state.funds_players = curr_funds
             curr_state.players_round = players_in_round
+            curr_state.time_counter = min_time
         
             curr_state.dealer.currentDeck.shuffle()
             curr_state.funds_players[curr_state.big_blind_ind] -= big_blind_bet
@@ -563,10 +572,42 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 
+    
+    @objc func updateCounter() {
+        //example functionality
+        if check_time > 0 {
+            check_time -= 1
+            timer.text = "Remaining: " + String(check_time) + "s"
+        }
+        else{
+            callFold(self)
+        }
+    }
+    
+    func startTimer() {
+      guard curr_timer == nil else { return }
+        check_time = curr_state.time_counter
+      curr_timer =  Timer.scheduledTimer(
+        timeInterval: TimeInterval(1.0),
+          target      : self,
+          selector    : #selector(updateCounter),
+          userInfo    : nil,
+          repeats     : true)
+        timer.isHidden = false
+    }
+    
+    func stopTimer() {
+      curr_timer?.invalidate()
+      curr_timer = nil
+        timer.isHidden = true
+        timer.text = "Remaining: " + String(curr_state.time_counter) + "s"
+    }
+    
     func handleBoard(){
         // check if dealer has to raise/check before revealing flop and when to move to next betting round
         // Game over label
         handleAction()
+        stopTimer()
         MultiPeer.instance.send(object: curr_state, type: DataType.GameState.rawValue)
         show_curr_player_cards()
     }
@@ -624,8 +665,10 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         
         if (curr_state.curr_player_ind != index){
             hideAllButtons()
+            stopTimer()
         }
         else{
+            startTimer()
             buttons_enable()
         }
         
@@ -662,6 +705,8 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
         foldButton.isHidden = true
         raiseButton.isHidden = true
         checkButton.isHidden = true
+        timer.isHidden = true
+        timer.text = "Remaining: " + String(curr_state.time_counter) + "s"
     }
 
     func buttons_enable(){
@@ -677,6 +722,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
             checkButton.isHidden = false
             raiseButton.isHidden = false
         }
+        timer.isHidden = false
     }
 
     func bet_pop_up(bet: Bool){

@@ -113,6 +113,7 @@ class HostViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         VC.players_filtered = selected_players
         VC.funds_filtered = selected_funds
+        VC.min_time = time_limit
         
     }
     

@@ -14,8 +14,8 @@
             filePath = "Blue Chip Poker/PokerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
             landmarkName = "show_curr_player_cards()"
             landmarkType = "7">
          </BreakpointContent>

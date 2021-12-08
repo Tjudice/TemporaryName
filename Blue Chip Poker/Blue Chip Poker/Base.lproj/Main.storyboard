@@ -655,6 +655,13 @@
                                     <action selector="Homescreen:" destination="got-wH-5t7" eventType="touchUpInside" id="RHR-KB-65p"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remaining :00s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvE-Ad-nBh">
+                                <rect key="frame" x="670" y="28" width="118" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ltE-ve-EfQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -690,6 +697,7 @@
                         <outlet property="player3Label" destination="knD-9S-Jcr" id="7ZE-fO-s2N"/>
                         <outlet property="potLabel" destination="mOV-av-bJx" id="RQT-A0-FzI"/>
                         <outlet property="raiseButton" destination="8Mb-l0-BLm" id="c9s-LJ-tc2"/>
+                        <outlet property="timer" destination="rvE-Ad-nBh" id="kRd-3y-WFk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nae-Bv-vEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
