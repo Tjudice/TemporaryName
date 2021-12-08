@@ -434,7 +434,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9HAP5C7MQF;
+				DEVELOPMENT_TEAM = 96AK8ABBLG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Blue Chip Poker/Info.plist";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "This demo app requires local network permissions to share messages between devices over peer-to-peer wifi";
@@ -451,7 +451,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.akashakk.SwiftyTeeth-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.amubarez-BlueChipPoker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -467,7 +467,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9HAP5C7MQF;
+				DEVELOPMENT_TEAM = 96AK8ABBLG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Blue Chip Poker/Info.plist";
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "This demo app requires local network permissions to share messages between devices over peer-to-peer wifi";
@@ -484,7 +484,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.akashakk.SwiftyTeeth-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.amubarez-BlueChipPoker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
