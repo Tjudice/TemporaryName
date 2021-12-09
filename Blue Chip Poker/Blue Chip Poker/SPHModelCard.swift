@@ -1,11 +1,23 @@
+/***
+ NOTE: THIS FILE HAS BEEN TAKEN FROM A THIRD-PARTY  LIBRARY : https://github.com/ericdke/PokerHands
+ Here are the details of the original copyright:
+ Created by Ivan Sanchez on 06/10/2014.
+ Copyright (c) 2014 Gourame Limited. All rights reserved.
+ ***/
+
 import Foundation
 
 public class Card: NSObject, NSCoding {
+    
+    /// NOTE : This function has been added to the original file to make it compatible for encoding the object in the BlueChipPoker App
+    /// Original file : https://github.com/ericdke/PokerHands
     public func encode(with coder: NSCoder) {
         coder.encode(suit, forKey: "suit")
         coder.encode(rank, forKey: "rank")
     }
     
+    /// NOTE : This function has been added to the original file to make it compatible for decoding the object in the BlueChipPoker App
+    /// Original file : https://github.com/ericdke/PokerHands
     public required convenience init?(coder: NSCoder) {
         let suit = coder.decodeObject(forKey: "suit") as! String
         let rank = coder.decodeObject(forKey: "rank") as! String

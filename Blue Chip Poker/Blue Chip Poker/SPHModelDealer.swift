@@ -1,6 +1,16 @@
+/***
+ NOTE: THIS FILE HAS BEEN TAKEN FROM A THIRD-PARTY  LIBRARY : https://github.com/ericdke/PokerHands
+ Here are the details of the original copyright:
+ Created by Ivan Sanchez on 06/10/2014.
+ Copyright (c) 2014 Gourame Limited. All rights reserved.
+ ***/
+
 import Foundation
 
 public class Dealer: NSObject, NSCoding, SPHCardsDebug {
+    
+    /// NOTE : This function has been added to the original file to make it compatible for encoding the object in the BlueChipPoker App
+    /// Original file : https://github.com/ericdke/PokerHands
     public func encode(with coder: NSCoder) {
         coder.encode(currentDeck, forKey: "currentDeck")
         coder.encode(table, forKey: "table")
@@ -8,6 +18,8 @@ public class Dealer: NSObject, NSCoding, SPHCardsDebug {
         coder.encode(currentHandWinner, forKey: "currentHandWinner")
     }
     
+    /// NOTE : This function has been added to the original file to make it compatible for decoding the object in the BlueChipPoker App
+    /// Original file : https://github.com/ericdke/PokerHands
     public required convenience init?(coder: NSCoder) {
         self.init()
         self.currentDeck = coder.decodeObject(forKey: "currentDeck") as! Deck
@@ -102,7 +114,7 @@ public class Dealer: NSObject, NSCoding, SPHCardsDebug {
         var cardsToDeal = [Card]()
         for cardChars in upCardChars {
             let cardObj = Card(suit: cardChars[1], rank: cardChars[0])
-            guard let index = currentDeck.cards.index(of: cardObj) else {
+            guard let index = currentDeck.cards.firstIndex(of: cardObj) else {
                 break
             }
             currentDeck.cards.remove(at: index)
@@ -118,7 +130,7 @@ public class Dealer: NSObject, NSCoding, SPHCardsDebug {
     func deal(cards: [Card], to player: inout Player) {
         var cardsToDeal = [Card]()
         for card in cards {
-            guard let indexToRemove = currentDeck.cards.index(of: card) else {
+            guard let indexToRemove = currentDeck.cards.firstIndex(of: card) else {
                 break
             }
             currentDeck.cards.remove(at: indexToRemove)
@@ -169,7 +181,7 @@ public class Dealer: NSObject, NSCoding, SPHCardsDebug {
         // TODO: do the permutations with rank/else instead of literal cards descriptions
         let sortedPerms = perms.map({ $0.sorted(by: <) })
         //let permsSet = NSSet(array: sortedPerms)
-        let uniqs = Array(sortedPerms).map({ $0 as! [String] })
+        let uniqs = Array(sortedPerms).map({ $0 })
         var handsResult = [(HandRank, [String])]()
         for hand in uniqs {
             let h = evaluator.evaluate(cards: hand)

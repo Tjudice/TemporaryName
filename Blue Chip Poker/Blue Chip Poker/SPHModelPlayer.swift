@@ -1,23 +1,28 @@
+/***
+ NOTE: THIS FILE HAS BEEN TAKEN FROM A THIRD-PARTY  LIBRARY : https://github.com/ericdke/PokerHands
+ Here are the details of the original copyright:
+ Created by Ivan Sanchez on 06/10/2014.
+ Copyright (c) 2014 Gourame Limited. All rights reserved.
+ ***/
+
 import Foundation
 
 public class Player: NSObject, NSCoding, CanTakeCard {
+    
+    /// NOTE : This function has been added to the original file to make it compatible for encoding the object in the BlueChipPoker App
+    /// Original file : https://github.com/ericdke/PokerHands
     public func encode(with coder: NSCoder) {
         coder.encode(name, forKey: "name")
-        //coder.encode(historyOfDealtCards, forKey: "historyOfDealtCards")
         coder.encode(frequentHands, forKey: "frequentHands")
         coder.encode(cards, forKey: "cards")
-//        coder.encode(hand?.0.rank, forKey: "hand_rank")
-//        coder.encode(hand?.1, forKey: "hand_name")
     }
     
+    /// NOTE : This function has been added to the original file to make it compatible for decoding the object in the BlueChipPoker App
+    /// Original file : https://github.com/ericdke/PokerHands
     public required convenience init?(coder: NSCoder) {
         let name = coder.decodeObject(forKey: "name") as! String
         self.init(name: name)
-        //historyOfDealtCards = coder.decodeObject(forKey: "historyOfDealtCards") as! [(Card, Card, Date)]
         frequentHands = coder.decodeObject(forKey: "frequentHands") as! [String:Int]
-//        let hand_r = coder.decodeInteger(forKey: "hand_rank")
-//        let hand_s = coder.decodeObject(forKey: "hand_name") as! [String]
-//        hand = (HandRank(rank: hand_r),hand_s)
         cards = coder.decodeObject(forKey: "cards") as! [Card]
     }
     

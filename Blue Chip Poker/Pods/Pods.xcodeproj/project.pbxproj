@@ -38,7 +38,7 @@
 		2B9234820D09717219BEAE2AAA9171BF /* Pods-Blue Chip Poker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Blue Chip Poker-Info.plist"; sourceTree = "<group>"; };
 		2E2EE6FF24A556A9DBE7B13517504A37 /* Pods-Blue Chip Poker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Blue Chip Poker-acknowledgements.plist"; sourceTree = "<group>"; };
 		33D3FE413F81196C623352D52C2A18CA /* MultiPeerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultiPeerDelegate.swift; path = Sources/MultiPeerDelegate.swift; sourceTree = "<group>"; };
-		45957EBEACD231120B83DF21345181AC /* MultiPeer */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MultiPeer; path = MultiPeer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45957EBEACD231120B83DF21345181AC /* MultiPeer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MultiPeer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FDF5B14210BD78BCF4B7A1DAC73AE5 /* Pods-Blue Chip Poker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Blue Chip Poker-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4CF3DF0BDE3FC869AB6A8262E2E0C56C /* MultiPeer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MultiPeer-umbrella.h"; sourceTree = "<group>"; };
 		5C70EA77BDE360E84DFCD49657E1B92B /* MultiPeer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultiPeer.h; path = Sources/MultiPeer.h; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		7ED746A0322316FA66357753C438522D /* Pods-Blue Chip Poker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Blue Chip Poker.release.xcconfig"; sourceTree = "<group>"; };
 		814193DAFB2B35DE55850D83984A28BE /* Pods-Blue Chip Poker */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Blue Chip Poker"; path = Pods_Blue_Chip_Poker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB9DFA9828FE3C7EBA2FDC147B442D9 /* MultiPeer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MultiPeer.release.xcconfig; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C0488FD552EE3A8616AAE610D35FB744 /* MultiPeer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultiPeer.swift; path = Sources/MultiPeer.swift; sourceTree = "<group>"; };
 		CF8BAA41214B36DB840571A53E1B5BD2 /* MultiPeer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MultiPeer-Info.plist"; sourceTree = "<group>"; };
 		D2E9AD53848258A3FC82C296D983ADA6 /* MultiPeer_tvOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultiPeer_tvOS.h; path = Sources/MultiPeer_tvOS.h; sourceTree = "<group>"; };
@@ -128,7 +128,6 @@
 				EFE2DD6D0877C42EAB0D94B7DC941B85 /* Peer.swift */,
 				008844AB1B3807EE9C4B3632ED966027 /* Support Files */,
 			);
-			name = MultiPeer;
 			path = MultiPeer;
 			sourceTree = "<group>";
 		};
@@ -154,7 +153,7 @@
 		D42B6EB7F3040661EEDF261F51F2D9E6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				45957EBEACD231120B83DF21345181AC /* MultiPeer */,
+				45957EBEACD231120B83DF21345181AC /* MultiPeer.framework */,
 				814193DAFB2B35DE55850D83984A28BE /* Pods-Blue Chip Poker */,
 			);
 			name = Products;
@@ -215,7 +214,7 @@
 			);
 			name = MultiPeer;
 			productName = MultiPeer;
-			productReference = 45957EBEACD231120B83DF21345181AC /* MultiPeer */;
+			productReference = 45957EBEACD231120B83DF21345181AC /* MultiPeer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CBFFDF249D1DF4C7FB93C6FDF694D61F /* Pods-Blue Chip Poker */ = {
@@ -244,7 +243,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1310;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -329,7 +328,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MultiPeer/MultiPeer-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MultiPeer/MultiPeer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -566,7 +565,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MultiPeer/MultiPeer-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MultiPeer/MultiPeer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

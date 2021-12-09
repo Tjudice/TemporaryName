@@ -13,6 +13,7 @@
 		32279FEF272A310500FBBE77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FED272A310500FBBE77 /* Main.storyboard */; };
 		32279FF1272A310700FBBE77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32279FF0272A310700FBBE77 /* Assets.xcassets */; };
 		32279FF4272A310700FBBE77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32279FF2272A310700FBBE77 /* LaunchScreen.storyboard */; };
+		3800302E2761725A00B48BC8 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3800302D2761725900B48BC8 /* GameState.swift */; };
 		3827DFB92750B05400A5121A /* SPHModelPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827DFAD2750B05300A5121A /* SPHModelPlayer.swift */; };
 		3827DFBA2750B05400A5121A /* combinationToRank_bytes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3827DFAE2750B05300A5121A /* combinationToRank_bytes.json */; };
 		3827DFBB2750B05400A5121A /* SPHModelDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3827DFAF2750B05300A5121A /* SPHModelDeck.swift */; };
@@ -42,6 +43,7 @@
 		32279FF0272A310700FBBE77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32279FF3272A310700FBBE77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32279FF5272A310700FBBE77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3800302D2761725900B48BC8 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		3827DFAD2750B05300A5121A /* SPHModelPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelPlayer.swift; sourceTree = "<group>"; };
 		3827DFAE2750B05300A5121A /* combinationToRank_bytes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = combinationToRank_bytes.json; sourceTree = "<group>"; };
 		3827DFAF2750B05300A5121A /* SPHModelDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPHModelDeck.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				38C47AAB273032000046341A /* MainViewController.swift */,
 				383F065727301552008F4D3B /* HostViewController.swift */,
 				3827DFC72750B4DE00A5121A /* PokerViewController.swift */,
+				3800302D2761725900B48BC8 /* GameState.swift */,
 				384024D927568777005AE7AE /* UserSettingsController.swift */,
 				384024DB275695A8005AE7AE /* GameSettingsController.swift */,
 				32279FED272A310500FBBE77 /* Main.storyboard */,
@@ -275,6 +278,7 @@
 				384024DA27568777005AE7AE /* UserSettingsController.swift in Sources */,
 				3827DFBD2750B05400A5121A /* SPHExtensions.swift in Sources */,
 				3827DFC42750B05400A5121A /* SPHModelCard.swift in Sources */,
+				3800302E2761725A00B48BC8 /* GameState.swift in Sources */,
 				38C47AAC273032000046341A /* MainViewController.swift in Sources */,
 				3827DFC22750B05400A5121A /* SPHEvaluator.swift in Sources */,
 				383F065827301552008F4D3B /* HostViewController.swift in Sources */,

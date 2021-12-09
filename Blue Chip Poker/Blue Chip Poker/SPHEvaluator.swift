@@ -1,7 +1,9 @@
-//  Created by Ivan Sanchez on 06/10/2014.
-//  Copyright (c) 2014 Gourame Limited. All rights reserved.
-//
-//  Modified for SwiftyPokerHands to take values from JSON files instead of huge array literals.
+/***
+ NOTE: THIS FILE HAS BEEN TAKEN FROM A THIRD-PARTY  LIBRARY : https://github.com/ericdke/PokerHands
+ Here are the details of the original copyright:
+ Created by Ivan Sanchez on 06/10/2014.
+ Copyright (c) 2014 Gourame Limited. All rights reserved.
+ ***/
 
 import Foundation
 

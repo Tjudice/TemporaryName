@@ -16,7 +16,7 @@ import MultipeerConnectivity
 /// multiPeer(connectedDevicesChanged: [String])
 
 public typealias MCPeerID = MultipeerConnectivity.MCPeerID
-public protocol MultiPeerDelegate: class {
+public protocol MultiPeerDelegate: AnyObject {
     /// didReceiveData: delegate runs on receiving data from another peer
     func multiPeer(didReceiveData data: Data, ofType type: UInt32, from peerID: MCPeerID)
 
