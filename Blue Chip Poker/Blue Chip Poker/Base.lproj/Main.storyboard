@@ -324,31 +324,25 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="PFr-to-NUF"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kK1-Jk-yKc">
-                                        <rect key="frame" x="211" y="159" width="209" height="35"/>
-                                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Decision Time Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKo-WV-bGu">
-                                        <rect key="frame" x="211" y="203" width="222" height="35"/>
+                                        <rect key="frame" x="211" y="206" width="222" height="35"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Default: $0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSG-jh-HUe">
-                                        <rect key="frame" x="462" y="119" width="225" height="35"/>
+                                        <rect key="frame" x="462" y="100" width="225" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgm-ge-SgH">
-                                        <rect key="frame" x="211" y="119" width="204" height="35"/>
+                                        <rect key="frame" x="211" y="100" width="204" height="35"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="15" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="qJx-a2-mmk">
-                                        <rect key="frame" x="460" y="206" width="118" height="30"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="15" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="qJx-a2-mmk">
+                                        <rect key="frame" x="460" y="212" width="118" height="30"/>
                                         <color key="minimumTrackTintColor" red="0.39561077" green="0.025763352860000002" blue="0.110905399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="maximumTrackTintColor" red="0.39561077" green="0.025763352860000002" blue="0.110905399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
@@ -356,7 +350,7 @@
                                         </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="h6l-cz-DA2">
-                                        <rect key="frame" x="460" y="166" width="118" height="30"/>
+                                        <rect key="frame" x="460" y="156" width="118" height="42"/>
                                         <color key="minimumTrackTintColor" red="0.39561077" green="0.025763352860000002" blue="0.110905399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="maximumTrackTintColor" red="0.39561077" green="0.025763352860000002" blue="0.110905399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
@@ -364,14 +358,20 @@
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rT9-BA-iTZ">
-                                        <rect key="frame" x="605" y="166" width="73" height="26"/>
+                                        <rect key="frame" x="605" y="151" width="73" height="44"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtU-5d-uAG">
-                                        <rect key="frame" x="596" y="206" width="133" height="26"/>
+                                        <rect key="frame" x="605" y="213" width="133" height="26"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kK1-Jk-yKc">
+                                        <rect key="frame" x="211" y="156" width="209" height="35"/>
+                                        <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -379,16 +379,16 @@
                                 <viewLayoutGuide key="safeArea" id="NIC-96-cYW"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="KKo-WV-bGu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NIC-96-cYW" secondAttribute="leading" symbolic="YES" id="3Sg-HV-9XZ"/>
                                     <constraint firstItem="BfT-mf-ih1" firstAttribute="leading" secondItem="kK1-Jk-yKc" secondAttribute="trailing" constant="-252" id="4Ak-Qv-3u7"/>
-                                    <constraint firstItem="Pcw-EY-IQa" firstAttribute="top" secondItem="KKo-WV-bGu" secondAttribute="bottom" constant="29" id="6uK-hN-WQ6"/>
+                                    <constraint firstItem="Pcw-EY-IQa" firstAttribute="top" secondItem="KKo-WV-bGu" secondAttribute="bottom" constant="26" id="6uK-hN-WQ6"/>
                                     <constraint firstItem="NIC-96-cYW" firstAttribute="trailing" secondItem="Pcw-EY-IQa" secondAttribute="trailing" constant="242" id="9X5-YL-iEp"/>
                                     <constraint firstItem="Kgm-ge-SgH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NIC-96-cYW" secondAttribute="leading" symbolic="YES" id="9ZK-7h-n3c"/>
                                     <constraint firstItem="D7S-e3-846" firstAttribute="centerY" secondItem="BfT-mf-ih1" secondAttribute="centerY" id="A6U-Hv-mZc"/>
                                     <constraint firstItem="Kgm-ge-SgH" firstAttribute="bottom" secondItem="gSG-jh-HUe" secondAttribute="bottom" id="AHG-1X-bVU"/>
-                                    <constraint firstItem="KKo-WV-bGu" firstAttribute="centerY" secondItem="qJx-a2-mmk" secondAttribute="centerY" id="Bmo-pi-14b"/>
-                                    <constraint firstItem="KKo-WV-bGu" firstAttribute="top" secondItem="kK1-Jk-yKc" secondAttribute="bottom" constant="9" id="E7r-1I-teE"/>
-                                    <constraint firstItem="kK1-Jk-yKc" firstAttribute="top" secondItem="Kgm-ge-SgH" secondAttribute="bottom" constant="5" id="FTL-BQ-Jmn"/>
+                                    <constraint firstItem="VtU-5d-uAG" firstAttribute="top" secondItem="rT9-BA-iTZ" secondAttribute="bottom" constant="18" id="BCw-jB-63R"/>
+                                    <constraint firstItem="KKo-WV-bGu" firstAttribute="centerY" secondItem="qJx-a2-mmk" secondAttribute="centerY" constant="-3" id="Bmo-pi-14b"/>
+                                    <constraint firstItem="KKo-WV-bGu" firstAttribute="top" secondItem="kK1-Jk-yKc" secondAttribute="bottom" constant="15" id="E7r-1I-teE"/>
+                                    <constraint firstItem="kK1-Jk-yKc" firstAttribute="top" secondItem="Kgm-ge-SgH" secondAttribute="bottom" constant="21" id="FTL-BQ-Jmn"/>
                                     <constraint firstItem="kK1-Jk-yKc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NIC-96-cYW" secondAttribute="leading" symbolic="YES" id="GGJ-X6-gHJ"/>
                                     <constraint firstAttribute="trailing" secondItem="D7S-e3-846" secondAttribute="trailing" constant="-72" id="Imb-rL-stV"/>
                                     <constraint firstItem="rT9-BA-iTZ" firstAttribute="leading" secondItem="BfT-mf-ih1" secondAttribute="trailing" constant="-124" id="J7J-Jh-70i"/>
@@ -398,27 +398,29 @@
                                     <constraint firstItem="D7S-e3-846" firstAttribute="leading" secondItem="BfT-mf-ih1" secondAttribute="trailing" constant="-729" id="NMz-rs-DfQ"/>
                                     <constraint firstItem="BfT-mf-ih1" firstAttribute="leading" secondItem="KKo-WV-bGu" secondAttribute="trailing" constant="-265" id="RaP-Ko-tzb"/>
                                     <constraint firstItem="BfT-mf-ih1" firstAttribute="top" secondItem="D7S-e3-846" secondAttribute="bottom" constant="-352" id="RrM-vG-gaS"/>
-                                    <constraint firstItem="h6l-cz-DA2" firstAttribute="top" secondItem="gSG-jh-HUe" secondAttribute="bottom" constant="12" id="W1u-KQ-5MU"/>
-                                    <constraint firstItem="qJx-a2-mmk" firstAttribute="top" secondItem="VtU-5d-uAG" secondAttribute="top" id="WNg-rw-ZZE"/>
-                                    <constraint firstItem="qJx-a2-mmk" firstAttribute="top" secondItem="h6l-cz-DA2" secondAttribute="bottom" constant="11" id="WxF-2f-ita"/>
+                                    <constraint firstItem="h6l-cz-DA2" firstAttribute="top" secondItem="gSG-jh-HUe" secondAttribute="bottom" constant="21" id="W1u-KQ-5MU"/>
+                                    <constraint firstItem="qJx-a2-mmk" firstAttribute="top" secondItem="VtU-5d-uAG" secondAttribute="top" constant="-1" id="WNg-rw-ZZE"/>
+                                    <constraint firstItem="qJx-a2-mmk" firstAttribute="top" secondItem="h6l-cz-DA2" secondAttribute="bottom" constant="15" id="WxF-2f-ita"/>
                                     <constraint firstItem="D7S-e3-846" firstAttribute="leading" secondItem="ZKc-kw-iCL" secondAttribute="leading" id="YXp-hy-Zqh"/>
-                                    <constraint firstItem="qJx-a2-mmk" firstAttribute="leading" secondItem="KKo-WV-bGu" secondAttribute="trailing" constant="29" id="ZI8-mu-H1a"/>
-                                    <constraint firstItem="BfT-mf-ih1" firstAttribute="trailing" secondItem="VtU-5d-uAG" secondAttribute="trailing" id="ZeC-KX-RUN"/>
+                                    <constraint firstItem="qJx-a2-mmk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KKo-WV-bGu" secondAttribute="trailing" constant="8" symbolic="YES" id="ZI8-mu-H1a"/>
+                                    <constraint firstItem="BfT-mf-ih1" firstAttribute="trailing" secondItem="VtU-5d-uAG" secondAttribute="trailing" constant="-9" id="ZeC-KX-RUN"/>
                                     <constraint firstItem="NIC-96-cYW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rT9-BA-iTZ" secondAttribute="trailing" symbolic="YES" id="a65-3M-Hhp"/>
-                                    <constraint firstItem="rT9-BA-iTZ" firstAttribute="top" secondItem="gSG-jh-HUe" secondAttribute="bottom" constant="12" id="azc-DU-Red"/>
+                                    <constraint firstItem="rT9-BA-iTZ" firstAttribute="top" secondItem="gSG-jh-HUe" secondAttribute="bottom" constant="16" id="azc-DU-Red"/>
+                                    <constraint firstItem="KKo-WV-bGu" firstAttribute="leading" secondItem="NIC-96-cYW" secondAttribute="leading" constant="167" id="cOc-Bo-kwa"/>
                                     <constraint firstItem="Pcw-EY-IQa" firstAttribute="leading" secondItem="BfT-mf-ih1" secondAttribute="trailing" constant="-399" id="dCo-Sb-3ys"/>
                                     <constraint firstItem="NIC-96-cYW" firstAttribute="trailing" secondItem="gSG-jh-HUe" secondAttribute="trailing" constant="165" id="djt-2f-ccu"/>
                                     <constraint firstItem="h6l-cz-DA2" firstAttribute="leading" secondItem="kK1-Jk-yKc" secondAttribute="trailing" constant="42" id="ea6-Re-dhF"/>
                                     <constraint firstItem="Kgm-ge-SgH" firstAttribute="centerY" secondItem="gSG-jh-HUe" secondAttribute="centerY" id="ewk-v6-8Zn"/>
                                     <constraint firstItem="gSG-jh-HUe" firstAttribute="leading" secondItem="BfT-mf-ih1" secondAttribute="trailing" constant="-267" id="i9X-rU-ZA7"/>
                                     <constraint firstItem="gSG-jh-HUe" firstAttribute="leading" secondItem="Kgm-ge-SgH" secondAttribute="trailing" constant="47" id="iPG-2l-sbG"/>
-                                    <constraint firstItem="BfT-mf-ih1" firstAttribute="top" secondItem="Kgm-ge-SgH" secondAttribute="bottom" constant="-84" id="jd0-Lg-KMI"/>
+                                    <constraint firstItem="BfT-mf-ih1" firstAttribute="top" secondItem="Kgm-ge-SgH" secondAttribute="bottom" constant="-65" id="jd0-Lg-KMI"/>
                                     <constraint firstItem="BfT-mf-ih1" firstAttribute="centerY" secondItem="ZKc-kw-iCL" secondAttribute="centerY" id="m4j-rj-4DF"/>
                                     <constraint firstItem="rT9-BA-iTZ" firstAttribute="leading" secondItem="h6l-cz-DA2" secondAttribute="trailing" constant="29" id="nWZ-sJ-cEZ"/>
                                     <constraint firstItem="h6l-cz-DA2" firstAttribute="trailing" secondItem="qJx-a2-mmk" secondAttribute="trailing" id="ocm-8K-jg0"/>
-                                    <constraint firstItem="VtU-5d-uAG" firstAttribute="leading" secondItem="qJx-a2-mmk" secondAttribute="trailing" constant="20" id="pKC-Bu-F9p"/>
+                                    <constraint firstItem="VtU-5d-uAG" firstAttribute="leading" secondItem="qJx-a2-mmk" secondAttribute="trailing" constant="29" id="pKC-Bu-F9p"/>
+                                    <constraint firstItem="KKo-WV-bGu" firstAttribute="top" secondItem="BfT-mf-ih1" secondAttribute="bottom" constant="-138" id="qhZ-0k-B4E"/>
                                     <constraint firstItem="BfT-mf-ih1" firstAttribute="top" secondItem="NIC-96-cYW" secondAttribute="top" constant="70" id="rzc-1n-iTq"/>
-                                    <constraint firstItem="Pcw-EY-IQa" firstAttribute="top" secondItem="qJx-a2-mmk" secondAttribute="bottom" constant="32" id="s2E-hr-ie3"/>
+                                    <constraint firstItem="Pcw-EY-IQa" firstAttribute="top" secondItem="qJx-a2-mmk" secondAttribute="bottom" constant="26" id="s2E-hr-ie3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -805,7 +807,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qxT-F4-MvI"/>
         <segue reference="PFr-to-NUF"/>
     </inferredMetricsTieBreakers>
     <resources>
