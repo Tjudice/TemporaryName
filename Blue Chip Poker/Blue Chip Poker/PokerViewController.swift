@@ -63,7 +63,7 @@ class PokerViewController: UIViewController, MultiPeerDelegate {
                            //HostViewController
     var players_filtered: [String] = [] // the players in the game. This variable is set by the HostViewController
     var funds_filtered: [Int] = [] // funds of the players. This variable is set by the HostViewController
-    var min_time : Int = 45  // time for a player to make his decision.  This variable is set by the //                                 //HostViewController
+    var min_time : Int = 45  // time for a player to make his decision.  This variable is set by the                                 //HostViewController
     
     var curr_timer : Timer? // Timer object to run when a player begins his turn
     var check_time: Int = 45 // updating the time to be set for the time label

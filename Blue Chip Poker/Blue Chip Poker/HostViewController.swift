@@ -19,7 +19,7 @@ class HostViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var min_amt: Int = 0 // Min amount for nearby players to join
     var num_players: Int = 2 // Number of players to search for to join
-    var time_limit: Int = 25 // Time limit for every player's turn
+    var time_limit: Int = 45 // Time limit for every player's turn
     var selected_players: [String] = [] // array of the usernames that the host has selected to invite
     
     @IBOutlet weak var startButton: UIButton!
